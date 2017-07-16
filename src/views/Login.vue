@@ -3,9 +3,9 @@
     <div class="login_box">
      <div class="content">
        <img src="../../static/images/user_default.jpg"/>
-       <mu-text-field hintText="用户名"/><br/>
-       <mu-text-field hintText="密码" v-model="value"/><br/>
-       <mu-raised-button label="登陆" class="demo-raised-button" primary/>
+       <mu-text-field hintText="用户名" v-model="name"/><br/>
+       <mu-text-field hintText="密码" type="password" v-model="password"/><br/>
+       <mu-raised-button label="登陆" @click="login()" class="demo-raised-button" primary/>
      </div>
     </div>
   </div>
@@ -15,10 +15,34 @@
 
 <script type="text/ecmascript-6">
 //  import $ from 'jquery'
+  import URL from '../utils/Interface'
+  import * as types from '../vuex/types'
   export default {
-    name: 'app',
-    data: {},
-    components: {},
+    data () {
+      return {
+        name: '',
+        password: '',
+        toast: false,
+        message: ''
+      }
+    },
+    methods: {
+      login () {
+        this.$http.post(URL.login, {
+          password: this.password,
+          name: this.name
+        }).then((res) => {
+          console.log(res)
+          if (res.data.code !== 0) {
+            alert(res.data.msg)
+            return
+          }
+          this.$store.commit(types.MUTATION_UPDATE_TOKEN, res.data.token)
+          this.$router.push({path: '/account'})
+        })
+      }
+
+    },
     mounted () {
      /* $(window).resize(function () {
         $('.login_box').css({

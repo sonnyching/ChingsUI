@@ -1,2 +1,2 @@
-export var ACTION_UPDATE_TOKEN = "ACTION_UPDATE_TOKEN" // 更新用户token
-export var MUTATION_UPDATE_TOKEN = "MUTATION_UPDATE_TOKEN" // 更新用户token
+export var ACTION_UPDATE_TOKEN = 'CTION_UPDATE_TOKEN' // 更新用户token
+export var MUTATION_UPDATE_TOKEN = 'MUTATION_UPDATE_TOKEN' // 更新用户token
