@@ -9,6 +9,11 @@
 
     <router-view></router-view>
 
+    <mu-dialog :open="dialog" title="title" ref="dialog">
+      {{dialogMsg}}
+      <mu-flat-button label="确定" slot="actions" primary @click="closeDialog"/>
+    </mu-dialog>
+
     <div class="footer">
       Chings ©2017 Created by SonnyChing
     </div>
@@ -16,9 +21,21 @@
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import * as types from './vuex/types'
+  import {mapState} from 'vuex'
+  export default {
+    name: 'app',
+    computed: mapState({
+      dialog: state => state.Dialog.open,
+      dialogMsg: state => state.Dialog.msg,
+      title: state => state.Dialog.tilte
+    }),
+    methods: {
+      closeDialog () {
+        this.$store.commit(types.DIALOG_CLOSE)
+      }
+    }
+  }
 </script>
 
 <style>
@@ -26,35 +43,9 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
-/*清楚浏览器默认样式*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
+
 body {
   line-height: 1;
 }

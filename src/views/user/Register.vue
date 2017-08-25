@@ -16,7 +16,7 @@
 
 <script type="text/ecmascript-6">
   //  import $ from 'jquery'
-  import URL from '../utils/Interface'
+  import URL from '../../utils/Interface'
   export default {
     data () {
       return {
