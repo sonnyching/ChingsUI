@@ -5,6 +5,8 @@ import Register from '../views/user/Register.vue'
 import User from '../views/user/UserBase.vue'
 import Index from '../views/Index.vue'
 import ArticleDetail from '../views/article/ArticleDetail.vue'
+import DesignArticle from '../views/article/DesignArticle.vue'
+import ArticleBase from '../views/article/ArticleBase.vue'
 
 // import App from '../App.vue'
 
@@ -34,10 +36,20 @@ const router = [
       }
     ]
   },
-  {
-    path: '/ArticleDetail/:id',
-    name: 'ArticleDetail',
-    component: ArticleDetail
+  { path: '/article',
+    component: ArticleBase,
+    children: [
+      {
+        path: 'detail/:id',
+        name: 'ArticleDetail',
+        component: ArticleDetail
+      },
+      {
+        path: 'add',
+        name: 'DesignArticle',
+        component: DesignArticle
+      }
+    ]
   }
 ]
 

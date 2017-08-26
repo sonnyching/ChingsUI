@@ -36,7 +36,7 @@
         this.activeTab = val
       },
       articleDetail (id) {
-        this.$router.push({path: '/ArticleDetail/' + id})
+        this.$router.push({path: '/article/detail/' + id})
       }
     },
     mounted () {
