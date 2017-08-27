@@ -38,7 +38,7 @@
             return
           }
           this.$store.commit(types.MUTATION_UPDATE_TOKEN, res.data.token)
-          this.$router.push({path: '/account'})
+          this.$router.push({path: '/'})
         })
       }
 

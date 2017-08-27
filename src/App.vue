@@ -2,8 +2,15 @@
   <div id="app">
     <div class="header">
       <mu-appbar title="">
-        <mu-icon-button icon="menu" slot="left"/>
-        <mu-flat-button label="登陆" slot="right"/>
+        <mu-icon-button icon="menu" slot="left" @click="toggleMenu"/>
+        <!--<mu-flat-button label="登陆" slot="right"/>-->
+        <mu-icon-menu icon="more_vert" slot="right">
+          <mu-menu-item title="首页" @click="goHome"/>
+          <mu-menu-item title="写文章" @click="goWriting"/>
+          <mu-menu-item title="登陆"/>
+          <mu-menu-item title="注销"/>
+
+        </mu-icon-menu>
       </mu-appbar>
     </div>
 
@@ -28,11 +35,21 @@
     computed: mapState({
       dialog: state => state.Dialog.open,
       dialogMsg: state => state.Dialog.msg,
-      title: state => state.Dialog.tilte
+      title: state => state.Dialog.tilte,
+      showMenu: false
     }),
     methods: {
       closeDialog () {
         this.$store.commit(types.DIALOG_CLOSE)
+      },
+      toggleMenu () {
+        this.showMenu = !this.showMenu
+      },
+      goWriting () {
+        this.$router.push({path: '/article/add'})
+      },
+      goHome () {
+        this.$router.push({path: '/'})
       }
     }
   }

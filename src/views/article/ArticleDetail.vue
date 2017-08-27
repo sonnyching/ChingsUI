@@ -1,5 +1,7 @@
 <template>
   <div class="article-container">
+    <div class="article_detail_title">{{title}}</div>
+    <div class="article_detail_header"> {{time}} by {{author}}</div>
     <div v-html="resultBody" class="article-content"></div>
   </div>
 
@@ -11,18 +13,23 @@
   export default {
     data () {
       return {
-//        message: {},
-        resultBody: ''
+        resultBody: '',
+        title: '',
+        author: '',
+        time: ''
       }
     },
     methods: {
+
     },
     mounted () {
       this.$http.post(URL.articleDetail, {
         article_id: this.$route.params.id
       }).then((res) => {
-//        this.message = res.data.data
-        this.resultBody = Marked(res.data.data.article_content, { renderer: Renderer })
+        this.resultBody = Marked(res.data.data.content, { renderer: Renderer })
+        this.title = res.data.data.title
+        this.author = res.data.data.authorName
+//        this.time = res.data.data.createTime
       })
     }
   }
@@ -30,5 +37,16 @@
 
 <style>
 @import "../../../static/common/article_markdown.css";
+
+  .article_detail_title{
+    font-size: 30px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .article_detail_header{
+    margin:20px;
+    text-align: center;
+  }
 
 </style>

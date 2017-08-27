@@ -4,14 +4,14 @@
       <div class="breadcrumb">
         <div v-for=" article in articleList">
           <mu-card class="article_card">
-            <mu-card-title :title="article.article_title"
+            <mu-card-title :title="article.title"
                            class="article_card_title"
-                           :subTitle="'作者：'+ article.article_author"/>
+                           :subTitle="'作者：'+ article.authorName"/>
             <mu-card-text class="article_card_text">
-              {{article.article_intro}}
+              {{article.content}}......
             </mu-card-text>
             <mu-card-actions>
-              <mu-flat-button label="查看" @click="articleDetail(article.article_id)"/>
+              <mu-flat-button label="查看" @click="articleDetail(article.id)"/>
             </mu-card-actions>
           </mu-card>
         </div>
@@ -66,11 +66,13 @@
 
   .article_card{
     margin: 20px;
+    width: 70%;
   }
 
   .article_card_title{
-    background-color: #9d76b7;
-    font-size: 15px;
+    text-align: center;
+    background-color: #d7d7d7;
+    font-size: 12px;
   }
 
   .article_card_text{
