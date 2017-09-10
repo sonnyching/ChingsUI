@@ -80,7 +80,7 @@
     width:90%;
     min-width: 300px;
     max-width: 900px;
-    margin: 3rem 2rem;
+    margin: 2rem 2rem;
   }
 
   .content-item-title {
@@ -94,7 +94,7 @@
   .content-item-line{
     width:50%;
     //border-bottom: 1px solid #878787;
-    margin: 1.5rem 0px;
+    margin: 1.2rem 0px;
   }
 
   .content-item-content{
