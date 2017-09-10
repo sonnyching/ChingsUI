@@ -3,7 +3,17 @@
     <div class="content">
       <div class="breadcrumb">
         <div v-for=" article in articleList">
-          <mu-card class="article_card">
+
+          <div class="content-item-wrapper" @click="articleDetail(article.id)">
+            <div class="content-item-title">{{article.title}}</div>
+            <div class="content-item-line"></div>
+            <div class="content-item-content">{{article.content}}......</div>
+            <!--<div class="content-item-time">{{article.createTime}}</div>-->
+            <div class="content-item-end"></div>
+
+          </div>
+
+         <!-- <mu-card class="article_card">
             <mu-card-title :title="article.title"
                            class="article_card_title"
                            :subTitle="'作者：'+ article.authorName"/>
@@ -13,7 +23,7 @@
             <mu-card-actions>
               <mu-flat-button label="查看" @click="articleDetail(article.id)"/>
             </mu-card-actions>
-          </mu-card>
+          </mu-card>-->
         </div>
       </div>
     </div>
@@ -64,23 +74,49 @@
     margin: 10px 0;
   }
 
-  .article_card{
-    margin: 20px;
-    width: 70%;
-  }
-
-  .article_card_title{
+  .content-item-wrapper{
+    cursor: pointer;
     text-align: center;
-    background-color: #d7d7d7;
-    font-size: 12px;
+    width:90%;
+    min-width: 300px;
+    max-width: 900px;
+    margin: 3rem 2rem;
   }
 
-  .article_card_text{
-    font-family: "微软雅黑";
-    text-indent:40px;
-    padding:20px;
+  .content-item-title {
+    font-size: 20px;
+    color: #878787;
+    width: 100%;
+    text-align: left;
+
+  }
+
+  .content-item-line{
+    width:50%;
+    //border-bottom: 1px solid #878787;
+    margin: 1.5rem 0px;
+  }
+
+  .content-item-content{
+    width:100%;
+    text-align: justify;
+    text-justify: inter-ideograph;
+    text-indent: 2em;
+    font-size: 1rem;
+    color: #6b6b6b;
+    font-family: '微软雅黑';
+    line-height: 1.7rem;
+  }
+
+  .content-item-time{
+    margin-top: 1rem;
     text-align: left;
   }
 
+  .content-item-end{
+    width:100%;
+    border-bottom: 1px solid #9d9d9d;
+    margin: 2.2rem 0px;
+  }
 
 </style>

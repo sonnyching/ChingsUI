@@ -6,9 +6,9 @@
         <!--<mu-flat-button label="登陆" slot="right"/>-->
         <mu-icon-menu icon="more_vert" slot="right">
           <mu-menu-item title="首页" @click="goHome"/>
-          <mu-menu-item title="写文章" @click="goWriting"/>
-          <mu-menu-item title="登陆"/>
-          <mu-menu-item title="注销"/>
+          <!--<mu-menu-item title="写文章" @click="goWriting"/>-->
+          <!--<mu-menu-item title="登陆" @click="goLogin"/>-->
+          <!--<mu-menu-item title="注销"/>-->
 
         </mu-icon-menu>
       </mu-appbar>
@@ -50,6 +50,9 @@
       },
       goHome () {
         this.$router.push({path: '/'})
+      },
+      goLogin () {
+        this.$router.push({path: '/user/login'})
       }
     }
   }
