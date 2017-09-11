@@ -1,10 +1,11 @@
 <template>
   <div class="article-container">
     <div class="article_input_area">
+      <input type="file" id="article_upload_image" accept="image/png,image/gif,image/jpeg" @change="uploadpic($event)">
       <input type="text" class="markdown-editor-header" autofocus v-model="articleTitle" placeholder="标题"/>
-      <!--<ol class="toolbar">-->
-      <!--<li @click="toggle">保存</li>-->
-      <!--</ol>-->
+      <ol class="toolbar">
+      <li @click="insertImage">插入图片</li>
+      </ol>
       <textarea class="markdown-editor" v-model="articleSource" placeholder="请输入文章内容..."></textarea>
     </div>
     <div v-html="resultBody" class="article_show_area"></div>
@@ -40,6 +41,9 @@
 <script type="text/ecmascript-6">
   import URL from '../../utils/Interface'
   import {Marked, Renderer} from '../../../static/common/markdown'
+  import axios from 'axios'
+  import $ from 'jquery'
+  import constant from '../../constant/constant.js'
   export default {
     data () {
       return {
@@ -72,6 +76,30 @@
       },
       addType () {
         this.showNewTypeInput = !this.showNewTypeInput
+      },
+      insertImage () {
+        $('#article_upload_image').click()
+      },
+      uploadpic (event) {
+        this.file = event.target.files[0]
+        var formdata = new FormData()
+        formdata.append('file', event.target.files[0])
+        formdata.append('image', event.target.files[0])
+
+        axios({
+          url: '/api/upload/image',
+          method: 'post',
+          data: formdata,
+          headers: {'Content-Type': 'multipart/form-data'}
+        }).then((res) => {
+          if (res.data.code < 0) {
+            alert(res.data.info)
+          } else {
+            var imgCode = '![250,300](' + constant.server_ip + res.data.data + ')'
+
+            this.articleSource = this.articleSource + ' \n ' + imgCode
+          }
+        })
       },
       save () {
         if (this.articleTitle === '') {
@@ -137,7 +165,7 @@
   .article-container .toolbar{
     width:100%;
     height:30px;
-    background-color: #dedede;
+    background-color: #a5e2f9;
     border-bottom: 1px solid #d9d9d9;
     margin: 0px;
   }

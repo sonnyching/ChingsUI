@@ -45,7 +45,6 @@ renderer.tablecell = function (content, flags) {
 */
 
 renderer.image = function (href, title, text) {
-  console.log(text)
   if (text != undefined) {
     var widthAndHeight = text.split(',')
     //  console.log(widthAndHeight[0] + ',' + widthAndHeight[1])
