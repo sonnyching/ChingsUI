@@ -14,10 +14,10 @@ marked.setOptions({
   smartLists: true,
   smartypants: true,
   highlight: function(code) {
-    return hljs.highlightAuto(code).value;
+    return require('highlight.js').highlightAuto(code).value;
   }
 })
-
+/*
 renderer.code = function (text, lang) {
   return '<pre class="code_style">' + '<code>' + text + '</code>' + '</pre>'
 }
@@ -40,6 +40,18 @@ renderer.tablerow = function (content) {
 
 renderer.tablecell = function (content, flags) {
   return '<td class="article-table-td">' + content + '</td>'
+}
+
+*/
+
+renderer.image = function (href, title, text) {
+  console.log(text)
+  if (text != undefined) {
+    var widthAndHeight = text.split(',')
+    //  console.log(widthAndHeight[0] + ',' + widthAndHeight[1])
+  }
+
+  return '<image src="'+href+'" width="'+widthAndHeight[0]+'" height="'+widthAndHeight[1]+'"  />'
 }
 
 export var Marked = marked

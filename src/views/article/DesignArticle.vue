@@ -18,8 +18,8 @@
         <mu-flat-button slot="right" label="关闭" color="white" @click="toggle"/>
       </mu-appbar>
       <mu-content-block class="popup-add-type">
-        <mu-select-field v-model="articleType" label="选择文章的类别" v-for="type in types">
-          <mu-menu-item :value="type.id" :title="type.name" />
+        <mu-select-field v-model="articleType" label="选择文章的类别" >
+          <mu-menu-item :value="type.id" :title="type.name" v-for="type in types" />
         </mu-select-field>
         <div>
           <mu-icon value="add" :size="32" @click="addType"/>
@@ -35,6 +35,7 @@
   </div>
 
 </template>
+
 
 <script type="text/ecmascript-6">
   import URL from '../../utils/Interface'
@@ -113,6 +114,7 @@
 
 <style>
 @import "../../../static/common/article_markdown.css";
+@import "../../../static/css/hightlight_styles/androidstudio.css";
 
   .article-container{
     width:100%;

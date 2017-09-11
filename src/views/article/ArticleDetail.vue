@@ -37,6 +37,7 @@
 
 <style>
 @import "../../../static/common/article_markdown.css";
+@import "../../../static/css/hightlight_styles/androidstudio.css";
 
   .article_detail_title{
     font-size: 30px;
