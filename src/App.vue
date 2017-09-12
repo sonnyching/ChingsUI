@@ -1,18 +1,5 @@
 <template>
   <div id="app">
-    <div class="header">
-      <mu-appbar title="">
-        <mu-icon-button icon="menu" slot="left" @click="toggleMenu"/>
-        <!--<mu-flat-button label="登陆" slot="right"/>-->
-        <mu-icon-menu icon="more_vert" slot="right">
-          <mu-menu-item title="首页" @click="goHome"/>
-          <!--<mu-menu-item title="写文章" @click="goWriting"/>-->
-          <!--<mu-menu-item title="登陆" @click="goLogin"/>-->
-          <!--<mu-menu-item title="注销"/>-->
-
-        </mu-icon-menu>
-      </mu-appbar>
-    </div>
 
     <router-view></router-view>
 
@@ -21,9 +8,9 @@
       <mu-flat-button label="确定" slot="actions" primary @click="closeDialog"/>
     </mu-dialog>
 
-    <div class="footer">
+   <!-- <div class="footer">
       Chings ©2017 Created by SonnyChing
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -41,18 +28,6 @@
     methods: {
       closeDialog () {
         this.$store.commit(types.DIALOG_CLOSE)
-      },
-      toggleMenu () {
-        this.showMenu = !this.showMenu
-      },
-      goWriting () {
-        this.$router.push({path: '/article/add'})
-      },
-      goHome () {
-        this.$router.push({path: '/'})
-      },
-      goLogin () {
-        this.$router.push({path: '/user/login'})
       }
     }
   }
@@ -83,10 +58,6 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-
-.header{
-  background-color: #878787;
 }
 
 .footer{

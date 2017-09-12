@@ -176,7 +176,7 @@
 <style>
 @import "../../../static/common/article_markdown.css";
 @import "../../../static/css/hightlight_styles/androidstudio.css";
-@import  "../../../static/fontawesome/css/font-awesome.min.css";
+@import "../../../static/fontawesome/css/font-awesome.min.css";
 
   .article-container{
     width:100%;

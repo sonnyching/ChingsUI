@@ -24,24 +24,27 @@ const routers = new VueRouter({
   routes: router
 })
 
-/*  //  导航钩子，用作登陆校验
+//  导航钩子，用作登陆校验
 routers.beforeEach((to, from, next) => {
-  if (to.path === '/login' || to.path === '/') {
-    next() //  授权页不做校验
-  } else {
-    if (sessionStorage.getItem('ChingToken') !== undefined) {
+  console.log(to.path)
+  console.log(to.path.indexOf('supervisor'))
+  console.log(sessionStorage.getItem('ChingToken'))
+  console.log(sessionStorage.getItem('ChingToken') !== null)
+
+  if (to.path.indexOf('supervisor') >= 0) {
+    var token = sessionStorage.getItem('ChingToken')
+    if (token !== null) {
       next()
     } else {
       next({
-        path: '/login',
-        query: {
-          redirect: to.fullPath
-        }
+        path: '/user/login'
       })
     }
+  } else {
+    //  无需登陆
+    next()
   }
 })
- */
 
 /* eslint-disable no-new */
 new Vue({

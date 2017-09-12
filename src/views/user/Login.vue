@@ -32,30 +32,17 @@
           password: this.password,
           name: this.name
         }).then((res) => {
-          console.log(res)
           if (res.data.code !== 0) {
             alert(res.data.msg)
             return
           }
           this.$store.commit(types.MUTATION_UPDATE_TOKEN, res.data.token)
-          this.$router.push({path: '/'})
+          this.$router.push({path: '/supervisor/home'})
         })
       }
 
     },
     mounted () {
-//      this.$refs.dialog.openDialog()
-//      this.$store.commit(types.DIALOG_OPEN, {
-//        title: 'title',
-//        msg: '测试消息啦'
-//      })
-     /* $(window).resize(function () {
-        $('.login_box').css({
-          left: ($(window).width() - $('.login_box').outerWidth()) / 2,
-          top: ($(window).height() - $('.login_box').outerHeight()) / 2
-        })
-      })
-      $(window).resize()  */
     }
   }
 </script>

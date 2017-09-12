@@ -1,29 +1,24 @@
 <template>
   <div class="layout">
+
+    <div class="header" >
+      <mu-appbar title="Ching's">
+        <mu-icon-menu icon="more_vert" slot="right">
+          <mu-menu-item title="管理员登陆" to="/user/login"/>
+        </mu-icon-menu>
+      </mu-appbar>
+    </div>
+
     <div class="content">
       <div class="breadcrumb">
         <div v-for=" article in articleList">
-
           <div class="content-item-wrapper" @click="articleDetail(article.id)">
             <div class="content-item-title">{{article.title}}</div>
             <div class="content-item-line"></div>
             <div class="content-item-content">{{article.content}}......</div>
             <!--<div class="content-item-time">{{article.createTime}}</div>-->
             <div class="content-item-end"></div>
-
           </div>
-
-         <!-- <mu-card class="article_card">
-            <mu-card-title :title="article.title"
-                           class="article_card_title"
-                           :subTitle="'作者：'+ article.authorName"/>
-            <mu-card-text class="article_card_text">
-              {{article.content}}......
-            </mu-card-text>
-            <mu-card-actions>
-              <mu-flat-button label="查看" @click="articleDetail(article.id)"/>
-            </mu-card-actions>
-          </mu-card>-->
         </div>
       </div>
     </div>
