@@ -1,8 +1,10 @@
 <template>
-  <div class="article-container">
-    <div class="article_detail_title">{{title}}</div>
-    <div class="article_detail_header"> {{time}} by {{author}}</div>
-    <div v-html="resultBody" class="article-content"></div>
+  <div class="article-detail-container">
+    <div class="article-detail-body">
+      <div class="article_detail_title">{{title}}</div>
+      <div class="article_detail_header"> {{time}} {{author}}</div>
+      <div v-html="resultBody" class="article-content"></div>
+    </div>
   </div>
 
 </template>
@@ -39,6 +41,21 @@
 @import "../../../static/common/article_markdown.css";
 @import "../../../static/css/hightlight_styles/androidstudio.css";
 
+  .article-detail-container{
+    width:100%;
+    max-width: 960px;
+    min-width: 640px;
+    margin: 0 auto;
+    padding-top: 2rem;
+  }
+
+  .article-detail-body{
+    background-color: #fcfaf2;
+    padding: 2rem;
+    margin:0 auto;
+    border-radius: 1px;
+  }
+
   .article_detail_title{
     font-size: 30px;
     text-align: center;
@@ -46,7 +63,7 @@
   }
 
   .article_detail_header{
-    margin:20px;
+    margin: 20px;
     text-align: center;
   }
 
