@@ -1,14 +1,16 @@
 
-import Account from '../views/user/Account'
-import Login from '../views/user/Login'
-import Register from '../views/user/Register.vue'
-import User from '../views/user/UserBase.vue'
-import Index from '../views/Index.vue'
-import ArticleDetail from '../views/article/ArticleDetail.vue'
-import DesignArticle from '../views/supervisor/DesignArticle.vue'
-import ArticleBase from '../views/article/ArticleBase.vue'
-import SupervisorHome from '../views/supervisor/SupervisorHome.vue'
-import SupervisorBase from '../views/supervisor/SupervisorBase.vue'
+const Account = () => import('../views/user/Account')
+const Login = () => import('../views/user/Login')
+const Register = () => import('../views/user/Register.vue')
+const User = () => import('../views/user/UserBase.vue')
+const Index = () => import('../views/Index.vue')
+const ArticleDetail = () => import('../views/article/ArticleDetail.vue')
+const DesignArticle = () => import('../views/supervisor/DesignArticle.vue')
+const ArticleBase = () => import('../views/article/ArticleBase.vue')
+const SupervisorHome = () => import('../views/supervisor/SupervisorHome.vue')
+const SupervisorBase = () => import('../views/supervisor/SupervisorBase.vue')
+
+// const Foo = () =>import('../views/supervisor/SupervisorBase.vue')
 
 // import App from '../App.vue'
 
