@@ -26,13 +26,13 @@ const routers = new VueRouter({
 
 //  导航钩子，用作登陆校验
 routers.beforeEach((to, from, next) => {
-  console.log(to.path)
-  console.log(to.path.indexOf('supervisor'))
-  console.log(sessionStorage.getItem('ChingToken'))
-  console.log(sessionStorage.getItem('ChingToken') !== null)
+  // console.log(to.path)
+  // console.log(to.path.indexOf('supervisor'))
+  // console.log(sessionStorage.getItem('ChingsToken'))
+  // console.log(sessionStorage.getItem('ChingsToken') !== null)
 
   if (to.path.indexOf('supervisor') >= 0) {
-    var token = sessionStorage.getItem('ChingToken')
+    var token = sessionStorage.getItem('ChingsToken')
     if (token !== null) {
       next()
     } else {

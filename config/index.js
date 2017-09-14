@@ -29,8 +29,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://www.idays.cc:8080/chings/',
-        //target: 'http://192.168.31.170:8080',
+        //target: 'http://www.idays.cc:8080/chings/',
+        target: 'http://192.168.31.170:8080',
         // target: 'http://192.168.16.120:8080',
         changeOrigin: true,
         pathRewrite: {

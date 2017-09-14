@@ -5,7 +5,7 @@
       <mu-appbar title="">
         <!--<mu-icon-button icon="menu" slot="left" @click="toggleMenu"/>-->
         <mu-icon-menu icon="more_vert" slot="right">
-          <mu-menu-item title="首页" @click="goHome"/>
+          <mu-menu-item title="首页" />
         </mu-icon-menu>
       </mu-appbar>
     </div>

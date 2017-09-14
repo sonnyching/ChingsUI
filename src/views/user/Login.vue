@@ -16,7 +16,7 @@
 <script type="text/ecmascript-6">
 //  import $ from 'jquery'
   import URL from '../../utils/Interface'
-  import * as types from '../../vuex/types'
+//  import * as types from '../../vuex/types'
   export default {
     data () {
       return {
@@ -36,7 +36,8 @@
             alert(res.data.msg)
             return
           }
-          this.$store.commit(types.MUTATION_UPDATE_TOKEN, res.data.token)
+          //  this.$store.commit(types.MUTATION_UPDATE_TOKEN, res.data.token)
+          sessionStorage.setItem('ChingsToken', res.data.token)
           this.$router.push({path: '/supervisor/home'})
         })
       }

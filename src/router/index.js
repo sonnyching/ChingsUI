@@ -9,6 +9,7 @@ const DesignArticle = () => import('../views/supervisor/DesignArticle.vue')
 const ArticleBase = () => import('../views/article/ArticleBase.vue')
 const SupervisorHome = () => import('../views/supervisor/SupervisorHome.vue')
 const SupervisorBase = () => import('../views/supervisor/SupervisorBase.vue')
+const ArticleManager = () => import('../views/supervisor/ArticleManager.vue')
 
 // const Foo = () =>import('../views/supervisor/SupervisorBase.vue')
 
@@ -62,6 +63,11 @@ const router = [
         path: 'addArticle',
         name: 'DesignArticle',
         component: DesignArticle
+      },
+      {
+        path: 'articles',
+        name: 'ArticleManager',
+        component: ArticleManager
       }
     ]
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="article-container">
+  <div class="article-design-container">
     <div class="article_input_area">
       <input type="file" id="article_upload_image" accept="image/png,image/gif,image/jpeg" @change="uploadpic($event)" style="display: none">
       <input type="text" class="markdown-editor-header" autofocus v-model="articleTitle" placeholder="标题"/>
@@ -178,9 +178,10 @@
 @import "../../../static/css/hightlight_styles/androidstudio.css";
 @import "../../../static/fontawesome/css/font-awesome.min.css";
 
-  .article-container{
-    width:100%;
+  .article-design-container{
+    width:95%;
     height: 100%;
+    margin: 0 30px;
   }
 
   .markdown-editor-header{
@@ -196,7 +197,7 @@
     font-family: -apple-system, "SF UI Text", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   }
 
-  .article-container .toolbar{
+  .article-design-container .toolbar{
     width:100%;
     height:30px;
     background-color: #f9c6f1;
@@ -258,7 +259,7 @@
   }
 
   .add_article_save-button{
-    /*margin: 5px;*/
+    margin: 10px 0px;
     width:100%;
     text-align: center;
   }
