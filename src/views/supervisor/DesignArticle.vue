@@ -119,7 +119,7 @@
               data: formdata,
               headers: {'Content-Type': 'multipart/form-data'}
             }).then((res) => {
-              if (res.data.code < 0) {
+              if (res.data.code !== 0) {
                 alert(res.data.info)
               } else {
                 var imgCode = '![' + reWidth + ',' + reHeight + '](' + constant.server_ip + res.data.data + ')'
@@ -153,7 +153,7 @@
           type: this.articleType,
           newTypeName: this.showNewTypeInput ? this.newTypeName : '' // 如果不显示新标签框，说明不需要添加新标签
         }).then((res) => {
-          if (res.data.code > 0) {
+          if (res.data.code === 0) {
             alert('发表成功！')  //  articleId
             this.$router.push({path: '/article/detail/' + res.data.info})
           } else {
@@ -165,7 +165,7 @@
     mounted () {
       this.$http.post(URL.articleTypes, {
       }).then((res) => {
-        if (res.data.code > 0) {
+        if (res.data.code === 0) {
           this.typelist = res.data.data
         }
       })

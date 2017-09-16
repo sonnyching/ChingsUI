@@ -28,6 +28,10 @@
       this.$http.post(URL.articleDetail, {
         article_id: this.$route.params.id
       }).then((res) => {
+        if (res.data.code !== 0) {
+          alert('网页加载失败')
+          return
+        }
         this.resultBody = Marked(res.data.data.content, { renderer: Renderer })
         this.title = res.data.data.title
         this.author = res.data.data.authorName
@@ -47,9 +51,12 @@
     min-width: 640px;
     margin: 0 auto;
     padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   .article-detail-body{
+    /*border:2px solid #f9f6cf;*/
+    box-shadow: 3px 4px 10px #888888;
     background-color: #fcfaf2;
     padding: 2rem;
     margin:0 auto;

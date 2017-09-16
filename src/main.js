@@ -11,6 +11,8 @@ import VueRouter from 'vue-router'
 import 'jquery'
 import 'muse-ui/dist/muse-ui.css'
 import '../static/common/common.css'
+import URL from '../src/utils/Interface'
+import HTTP from '../src/utils/httputil'
 
 Vue.use(MuseUI)
 Vue.use(Vuex)
@@ -33,13 +35,18 @@ routers.beforeEach((to, from, next) => {
 
   if (to.path.indexOf('supervisor') >= 0) {
     var token = sessionStorage.getItem('ChingsToken')
-    if (token !== null) {
-      next()
-    } else {
-      next({
-        path: '/user/login'
-      })
-    }
+    console.log(token)
+    HTTP.post(URL.isLogin, {
+      token: token
+    }).then((res) => {
+      if (res.data.code !== 0) {
+        next({
+          path: '/user/login'
+        })
+      } else {
+        next()
+      }
+    })
   } else {
     //  无需登陆
     next()
