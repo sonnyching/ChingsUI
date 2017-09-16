@@ -1,5 +1,9 @@
-// see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
+
+var proxy_ip = 'http://192.168.31.170:8080/'  //  寝室
+// var proxy_ip = 'http://192.168.16.120:8080/'  //  公司
+// var proxy_ip = 'http://www.idays.cc:8080/'  //  公司
+
 
 module.exports = {
   build: {
@@ -29,9 +33,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        // target: 'http://www.idays.cc:8080/chings/',
-        // target: 'http://192.168.31.170:8080',
-        target: 'http://192.168.16.120:8080',
+        target: proxy_ip,
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

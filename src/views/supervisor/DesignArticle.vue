@@ -5,7 +5,7 @@
       <input type="text" class="markdown-editor-header" autofocus v-model="articleTitle" placeholder="标题"/>
       <ol class="toolbar">
         <li @click="insertImage" class="fa fa-picture-o"></li>
-        <li class="fa fa-floppy-o"></li>
+        <li @click="toggle" class="fa fa-floppy-o"></li>
       </ol>
       <textarea class="markdown-editor" v-model="articleSource" placeholder="请输入文章内容..."></textarea>
     </div>
@@ -13,7 +13,7 @@
 
     <div class="clearfix"></div>
 
-    <mu-raised-button label="立即发表" class="add_article_save-button" primary @click="toggle"/>
+    <!--<mu-raised-button label="立即发表" class="add_article_save-button" primary @click="toggle"/>-->
 
     <mu-popup position="center" :open="showWindow" @close="toggle">
       <mu-appbar title="类别">
@@ -23,12 +23,13 @@
         <mu-select-field v-model="articleType" label="选择文章的类别" >
           <mu-menu-item :value="type.id" :title="type.name" v-for="type in types" />
         </mu-select-field>
-        <div>
+       <!-- <div>
           <mu-icon value="add" :size="32" @click="addType"/>
         </div>
         <div>
           <mu-text-field hintText="请输入新标签名" v-if="showNewTypeInput" v-model="newTypeName"/><br/>
-        </div>
+        </div>-->
+        <p></p>
         <mu-raised-button label="保存文章" class="demo-raised-button" primary  @click="save"/>
 
       </mu-content-block>
