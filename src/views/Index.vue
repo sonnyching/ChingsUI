@@ -2,8 +2,8 @@
   <div class="layout">
 
     <div class="ching-header" >
-      <div >
-
+      <div class="ching-header-title">
+        Ching's Sweet Home
       </div>
       <!--<mu-icon-menu icon="more_vert" style="float: right">-->
         <!--<mu-menu-item title="管理员登陆" to="/user/login"/>-->
@@ -11,15 +11,18 @@
     </div>
 
     <div class="ching-navigator">
-
+      <ul>
+        <li class="selected">IT弄潮儿</li>
+        <li>最好的她</li>
+      </ul>
     </div>
 
-    <div class="ching-content">
+    <div class="ching-content ching-content-bg">
       <mu-flexbox align="flex-start" class="ching-index-flex-box">
         <mu-flexbox-item style="width: 100%">
           <div class="ching-index-content-wrapper">
             <div v-for=" article in articleList" class="ching-index-content">
-              <span>{{article.createTime}}</span>
+              <!--<span>{{article.createTime}}</span>-->
               <div v-if="article.id !== undefined" class="content-item-wrapper" @click="articleDetail(article.id)">
                 <div class="content-item-title">{{article.title}}</div>
                 <div class="content-item-line"></div>
@@ -83,8 +86,8 @@
       this.$http.post(API.articleList, {currentPage: this.currentPage})
         .then((res) => {
           var tempList = res.data.data.list
-          var item = {createTime: 'The Begining'}
-          tempList.push(item)
+//          var item = {createTime: 'The Begining'}
+//          tempList.push(item)
           this.articleList = tempList
         })
         .catch((error) => {
@@ -97,23 +100,58 @@
   @import "../../static/fontawesome/css/font-awesome.min.css";
 
   .layout{
-    min-width: 600px;
+    min-width: 400px;
+    max-width: 900px;
     width: 85%;
     margin:0 auto;
+    /*cursor:url("../../static/images/cursor.png");*/
   }
 
   .ching-header{
     width:100%;
-    background-color: #6A8759;
+    background-color: #C7B3E5;
     height: 5rem;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.1rem;
+  }
+  .ching-header-title{
+    line-height: 5rem;
+    margin: 0 1.5rem;
+    font-family: Cursive,Lucida Grande, Lucida Sans Unicode, Helvetica, Arial, Verdana, sans-serif;
+    font-size: 1.5rem;
   }
 
   .ching-navigator{
     width:100%;
-    background-color: #872f32;
+    background-color: #EFCEE8;
     height: 2rem;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0rem;
+  }
+
+  .ching-navigator ul{
+    margin: 0px;
+    padding:0px;
+  }
+
+  .ching-navigator li {
+    list-style: none;
+    float: left;
+    padding: 0 0.5rem;
+    line-height: 2rem;
+    color: #fcfcfc;
+    text-align: center;
+  }
+
+  .ching-navigator li:hover {
+    /*color: #EFCEE8;*/
+    background-color: #F3D7B5;
+  }
+  .ching-navigator .selected {
+    /*color: #EFCEE8;*/
+    background-color: #F3D7B5;
+  }
+
+  .ching-navigator :first-child{
+    /*border-right: 1px solid #e9a8f9;*/
   }
 
   .ching-footer{
@@ -124,8 +162,14 @@
   }
 
   .ching-content{
-    background-color: #e2e2e2;
-
+    background-color: white;
+    padding:0rem 1.4rem 1rem 1.4rem;
+  }
+  .ching-content-bg {
+    background: url("../../static/images/bg-index-content.png") no-repeat;
+    background-size:100% 100%;
+    overflow: hidden;
+    /*background-size:cover;*/
   }
 
   .ching-index-flex-box{
@@ -136,20 +180,20 @@
 
   .ching-index-content-wrapper{
     width: 100%;
-    margin: 1rem;
+    margin: 0 1rem ;
     padding: 0.1rem;
   }
 
-
   .ching-index-right-wrapper{
     width: 40%;
-    margin: 1rem 0rem 1rem 1rem;
-    padding:1rem
+    margin: 0rem 0rem 1rem 1rem;
+    padding:1rem;
+    /*background-color: #FDFFDF;*/
   }
-
 
   /*文章列表*/
   .ching-index-content{
+    color: #000;
     width:100%;
     background-color: white;
     margin: 1rem 0rem;
@@ -157,6 +201,29 @@
     line-height: 1.3rem;
     font-family: '微软雅黑';
     word-break: break-all;
+    border: 1px solid #EFCEE8;
+    border-radius: 0.5rem;
+
+  }
+
+  .ching-index-content:hover{
+    cursor: pointer;
+    background-color: #DAF9CA;
+    /*color: #7e57c2;*/
+    font-size: large;
+    color: #c63ef9;
+  }
+
+  .content-item-title{
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 0.8rem;
+  }
+
+  .content-item-content{
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.4rem;
   }
 
 
@@ -170,6 +237,14 @@
     background-color: white;
     text-align: center;
     overflow: hidden;
+    border-left: 1px solid #F3D7B5;
+    border-right: 1px solid #F3D7B5;
+    border-top: 1px solid #F3D7B5;
+    border-radius: 0.5rem 0.5rem 0rem 0rem;
+    color: #000;
+    font-size: 0.8rem;
+    font-weight: 300;
+
   }
 
   .ching-index-right-abaout-me div{
