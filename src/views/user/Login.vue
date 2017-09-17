@@ -2,7 +2,7 @@
   <div class="login-container">
     <div class="login_box">
      <div class="content">
-       <img src="../../../static/images/user_default.jpg"/>
+       <img src="../../../statics/images/user_default.jpg"/>
        <mu-text-field hintText="用户名" v-model="name"/><br/>
        <mu-text-field hintText="密码" type="password" v-model="password"/><br/>
        <mu-raised-button label="登陆" @click="login()" class="demo-raised-button" primary/>

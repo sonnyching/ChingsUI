@@ -42,7 +42,7 @@
 
 <script type="text/ecmascript-6">
   import URL from '../../utils/Interface'
-  import {Marked, Renderer} from '../../../static/common/markdown'
+  import {Marked, Renderer} from '../../../statics/common/markdown'
   import axios from 'axios'
   import $ from 'jquery'
   import constant from '../../constant/constant.js'
@@ -175,9 +175,9 @@
 </script>
 
 <style>
-@import "../../../static/common/article_markdown.css";
-@import "../../../static/css/hightlight_styles/androidstudio.css";
-@import "../../../static/fontawesome/css/font-awesome.min.css";
+@import "../../../statics/common/article_markdown.css";
+@import "../../../statics/css/hightlight_styles/androidstudio.css";
+@import "../../../statics/fontawesome/css/font-awesome.min.css";
 
   .article-design-container{
     width:95%;

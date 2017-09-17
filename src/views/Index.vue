@@ -36,7 +36,7 @@
         <mu-flexbox-item class="ching-index-right-wrapper">
           <div>
             <div class="ching-index-right-abaout-me">
-              <img src="../../static/images/user_default.jpg" />
+              <img src="../../statics/images/user_default.jpg" />
               <div>我是 Sonny Ching ，头像是我家儿子！我是一名Java软件工程师，现居广州哦。</div>
             </div>
             <div class="click-btns">
@@ -97,7 +97,7 @@
 }
 </script>
 <style scoped>
-  @import "../../static/fontawesome/css/font-awesome.min.css";
+  @import "../../statics/fontawesome/css/font-awesome.min.css";
 
   .layout{
     min-width: 400px;
@@ -166,7 +166,7 @@
     padding:0rem 1.4rem 1rem 1.4rem;
   }
   .ching-content-bg {
-    background: url("../../static/images/bg-index-content.png") no-repeat;
+    background: url("../../statics/images/bg-index-content.png") no-repeat;
     background-size:100% 100%;
     overflow: hidden;
     /*background-size:cover;*/

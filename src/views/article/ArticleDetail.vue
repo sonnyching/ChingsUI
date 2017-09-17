@@ -11,7 +11,7 @@
 
 <script type="text/ecmascript-6">
   import URL from '../../utils/Interface'
-  import {Marked, Renderer} from '../../../static/common/markdown'
+  import {Marked, Renderer} from '../../../statics/common/markdown'
   export default {
     data () {
       return {
@@ -42,8 +42,8 @@
 </script>
 
 <style>
-@import "../../../static/common/article_markdown.css";
-@import "../../../static/css/hightlight_styles/androidstudio.css";
+@import "../../../statics/common/article_markdown.css";
+@import "../../../statics/css/hightlight_styles/androidstudio.css";
 
   .article-detail-container{
     width:100%;

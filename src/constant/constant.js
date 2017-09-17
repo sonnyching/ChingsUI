@@ -1,5 +1,5 @@
 
-var mode = 1 // pro-0 , dev1-1 , dev2-2
+var mode = 0 // pro-0 , dev1-1 , dev2-2
 
 //  测试环境-寝室
 var constantDev1 = {

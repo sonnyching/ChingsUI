@@ -75,7 +75,7 @@
 </script>
 
 <style>
-  @import "../../../static/fontawesome/css/font-awesome.min.css";
+  @import "../../../statics/fontawesome/css/font-awesome.min.css";
   .supervisor-articles{
     width:95%;
   }

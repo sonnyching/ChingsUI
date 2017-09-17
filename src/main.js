@@ -10,7 +10,7 @@ import store from './vuex/index'
 import VueRouter from 'vue-router'
 import 'jquery'
 import 'muse-ui/dist/muse-ui.css'
-import '../static/common/common.css'
+import '../statics/common/common.css'
 import URL from '../src/utils/Interface'
 import HTTP from '../src/utils/httputil'
 
