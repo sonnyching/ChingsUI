@@ -56,8 +56,9 @@
 
   .article-detail-body{
     /*border:2px solid #f9f6cf;*/
-    box-shadow: 3px 4px 10px #888888;
-    background-color: #fcfaf2;
+    /*box-shadow: 1px 1px 1px #c4c4c4;*/
+    background-color: white;
+    border:1px solid #eeeeee;
     padding: 2rem;
     margin:0 auto;
     border-radius: 1px;

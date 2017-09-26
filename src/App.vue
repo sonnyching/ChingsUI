@@ -60,13 +60,10 @@ table {
   border-spacing: 0;
 }
 
-.footer{
-  padding: 20px 0;
-  text-align: center;
-}
 body{
   /*background-color: #e5e5e5;*/
-  background-color: white;
+  /*background-color: white;*/
+  background-color: rgba(248, 248, 248, 0.99);
 
 }
 </style>

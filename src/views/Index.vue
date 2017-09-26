@@ -1,5 +1,5 @@
 <template>
-  <div class="layout">
+  <div class="ching-index-layout">
 
     <div class="ching-header" >
       <div class="ching-header-title">
@@ -12,12 +12,12 @@
 
     <div class="ching-navigator">
       <ul>
-        <li class="selected">IT弄潮儿</li>
-        <li>最好的她</li>
+        <!--<li class="selected">IT弄潮儿</li>-->
+        <!--<li>最好的她</li>-->
       </ul>
     </div>
 
-    <div class="ching-content ching-content-bg">
+    <div class="ching-content">
       <mu-flexbox align="flex-start" class="ching-index-flex-box">
         <mu-flexbox-item style="width: 100%">
           <div class="ching-index-content-wrapper">
@@ -32,7 +32,7 @@
               </span>
             </div>
           </div>
-        </mu-flexbox-item style="width:100%">
+        </mu-flexbox-item>
         <mu-flexbox-item class="ching-index-right-wrapper">
           <div>
             <div class="ching-index-right-abaout-me">
@@ -54,15 +54,21 @@
       </mu-flexbox>
     </div>
 
-    <div class="ching-footer">
+   <!-- <div class="ching-footer">
+      <div class="copyright">
+        Copyright © 2011-2017 idays.cc
+        mail:sonnyching@outlook.com
+      </div>
 
-    </div>
+    </div>-->
 
   </div>
 </template>
 
 <script>
   import API from '../utils/Interface'
+  import {Marked, Renderer} from '../../statics/common/markdown'
+
   export default {
     name: 'hello',
     data () {
@@ -80,14 +86,25 @@
       },
       url (url) {
         window.open(url)
+      },
+      removeHTMLTag (str) {
+        str = str.replace(/<\/?[^>]*>/g, '') //  去除HTML tag
+        str = str.replace(/[ | ]*\n/g, '\n') //  去除行尾空白
+        str = str.replace(/\n[\s| | ]*\r/g, '\n') // 去除多余空行
+        str = str.replace(/&nbsp;/ig, '') // 去掉&nbsp;
+        return str
       }
     },
     mounted () {
       this.$http.post(API.articleList, {currentPage: this.currentPage})
         .then((res) => {
           var tempList = res.data.data.list
-//          var item = {createTime: 'The Begining'}
-//          tempList.push(item)
+          for (var i = 0; i < tempList.length; i++) {
+            const content = tempList[i].content
+            const result = Marked(content, { renderer: Renderer })
+            tempList[i].content = this.removeHTMLTag(result)
+          }
+
           this.articleList = tempList
         })
         .catch((error) => {
@@ -99,30 +116,35 @@
 <style scoped>
   @import "../../statics/fontawesome/css/font-awesome.min.css";
 
-  .layout{
+  .ching-index-layout{
     min-width: 400px;
-    max-width: 900px;
-    width: 85%;
+    /*max-width: 900px;*/
+    width: 100%;
     margin:0 auto;
+    /*background-color: rgba(248, 248, 248, 0.99);*/
     /*cursor:url("../../static/images/cursor.png");*/
   }
 
   .ching-header{
     width:100%;
-    background-color: #C7B3E5;
-    height: 5rem;
+    /*background-color: #C7B3E5;*/
+    background-color: #72d4fb;
+    height: 3.6rem;
     margin-bottom: 0.1rem;
+    position: fixed;
+
   }
   .ching-header-title{
-    line-height: 5rem;
-    margin: 0 1.5rem;
+    line-height: 3.6rem;
+    margin: 0 1rem;
     font-family: Cursive,Lucida Grande, Lucida Sans Unicode, Helvetica, Arial, Verdana, sans-serif;
     font-size: 1.5rem;
+    color: white;
   }
 
   .ching-navigator{
     width:100%;
-    background-color: #EFCEE8;
+    /*background-color: #EFCEE8;*/
     height: 2rem;
     margin-bottom: 0rem;
   }
@@ -154,16 +176,26 @@
     /*border-right: 1px solid #e9a8f9;*/
   }
 
-  .ching-footer{
+/*  .ching-footer{
     width:100%;
-    height: 6rem;
-    background-color: #6A8759;
-    margin-top: 0.5rem;
+    height: 4rem;
   }
 
+  .ching-footer .copyright{
+    background-color: #ccd6d9;
+    line-height: 4rem;
+    margin:0 auto;
+  }*/
+
   .ching-content{
-    background-color: white;
-    padding:0rem 1.4rem 1rem 1.4rem;
+    padding:0rem 0rem 0rem 0em;
+    width:80%;
+    margin:2.6rem auto 0rem auto;
+    max-width: 1080px;
+    min-width: 690px;
+    padding: 1rem;
+    /*margin-top: 3.6rem;*/
+    /*box-shadow: 1px 1px 1px #888888;*/
   }
   .ching-content-bg {
     background: url("../../statics/images/bg-index-content.png") no-repeat;
@@ -179,16 +211,20 @@
 
 
   .ching-index-content-wrapper{
+    background-color: white;
+    border: 1px solid #eeeeee;
     width: 100%;
-    margin: 0 1rem ;
-    padding: 0.1rem;
+    margin: 0 0rem ;
+    padding: 0.4rem;
   }
 
   .ching-index-right-wrapper{
-    width: 40%;
-    margin: 0rem 0rem 1rem 1rem;
-    padding:1rem;
+    width: 30%;
+    margin: 0rem 0rem 0rem 2rem;
+    padding:0rem;
+    background-color: white;
     /*background-color: #FDFFDF;*/
+
   }
 
   /*文章列表*/
@@ -201,17 +237,18 @@
     line-height: 1.3rem;
     font-family: '微软雅黑';
     word-break: break-all;
-    border: 1px solid #EFCEE8;
-    border-radius: 0.5rem;
+    /*border: 1px solid #EFCEE8;*/
+    border-bottom: 1px solid #eeeeee;
+    /*border-radius: 0.5rem;*/
 
   }
 
   .ching-index-content:hover{
     cursor: pointer;
-    background-color: #DAF9CA;
+    /*background-color: #DAF9CA;*/
     /*color: #7e57c2;*/
     font-size: large;
-    color: #c63ef9;
+    color: #929292;
   }
 
   .content-item-title{
@@ -237,10 +274,10 @@
     background-color: white;
     text-align: center;
     overflow: hidden;
-    border-left: 1px solid #F3D7B5;
-    border-right: 1px solid #F3D7B5;
-    border-top: 1px solid #F3D7B5;
-    border-radius: 0.5rem 0.5rem 0rem 0rem;
+    border-left: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
+    border-top: 1px solid #eeeeee;
+    /*border-radius: 0.5rem 0.5rem 0rem 0rem;*/
     color: #000;
     font-size: 0.8rem;
     font-weight: 300;
@@ -310,78 +347,5 @@
     width: 100%;
     height: 100%;
   }
-
-
-
-/*  .ching-index-content{
-    margin:0rem 0 0 1rem;
-    padding: 1rem 1rem 1rem 0rem;
-    !*float: left;*!
-    !*border-right: 1px solid #f9da9e;*!
-    !*margin: 0 auto;*!
-    !*background-color: #a5e2f9;*!
-
-  }
-
-  .content-item-wrapper{
-    cursor: pointer;
-    text-align: center;
-    width:100%;
-    min-width: 300px;
-    max-width: 900px;
-    margin: 0.5rem 0rem;
-    !*padding-left: 1rem;*!
-    border: 1px solid #b187f9;
-    border-radius: 0.2rem;
-    !*float: left;*!
-  }
-
-  .content-item-title {
-    font-size: 20px;
-    width: 100%;
-    text-align: left;
-    color: white;
-    height: auto;
-    line-height: 2rem;
-    word-wrap:break-word;
-    padding-left: 1rem;
-    !*border-left: 0.2rem solid #483f33;*!
-    !*border-radius: 1rem;*!
-    background-color: #b187f9;
-    !*word-break: keep-all;*!
-
-  }
-
-  .content-item-line{
-    width:50%;
-    //border-bottom: 1px solid #878787;
-    margin: 1.2rem 0px;
-  }
-
-  .content-item-content{
-    width:100%;
-    text-align: justify;
-    text-justify: inter-ideograph;
-    text-indent: 2em;
-    font-size: 1rem;
-    color: #6b6b6b;
-    font-family: '微软雅黑';
-    word-wrap:break-word;
-    padding:0 1rem;
-    line-height: 1.7rem;
-  }
-
-  .content-item-end{
-    width:100%;
-    !*border-bottom: 1px solid #9d9d9d;*!
-    margin: 2.2rem 0px;
-  }
-
-
-  .ching-index-about-me{
-    width:100%;
-    margin: 1rem 1rem 1rem 0.5rem ;
-    border: 1px solid #ff1228;
-  }*/
 
 </style>
