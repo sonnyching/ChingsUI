@@ -5,35 +5,13 @@
       <input type="text" class="markdown-editor-header" autofocus v-model="articleTitle" placeholder="标题"/>
       <ol class="toolbar">
         <li @click="insertImage" class="fa fa-picture-o"></li>
-        <li @click="toggle" class="fa fa-floppy-o"></li>
+        <li @click="save" class="fa fa-floppy-o"></li>
       </ol>
       <textarea class="markdown-editor" v-model="articleSource" placeholder="请输入文章内容..."></textarea>
     </div>
     <div v-html="resultBody" class="article_show_area"></div>
 
     <div class="clearfix"></div>
-
-    <!--<mu-raised-button label="立即发表" class="add_article_save-button" primary @click="toggle"/>-->
-
-    <mu-popup position="center" :open="showWindow" @close="toggle">
-      <mu-appbar title="类别">
-        <mu-flat-button slot="right" label="关闭" color="white" @click="toggle"/>
-      </mu-appbar>
-      <mu-content-block class="popup-add-type">
-        <mu-select-field v-model="articleType" label="选择文章的类别" >
-          <mu-menu-item :value="type.id" :title="type.name" v-for="type in types" />
-        </mu-select-field>
-       <!-- <div>
-          <mu-icon value="add" :size="32" @click="addType"/>
-        </div>
-        <div>
-          <mu-text-field hintText="请输入新标签名" v-if="showNewTypeInput" v-model="newTypeName"/><br/>
-        </div>-->
-        <p></p>
-        <mu-raised-button label="保存文章" class="demo-raised-button" primary  @click="save"/>
-
-      </mu-content-block>
-    </mu-popup>
 
   </div>
 
@@ -51,34 +29,16 @@
       return {
         message: {},
         articleSource: '',
-        articleTitle: '',
-        articleType: '',
-        typelist: '',
-        newTypeName: '',
-        showWindow: false,
-        showNewTypeInput: false
+        articleTitle: ''
       }
     },
     computed: {
       resultBody () {
         var result = Marked(this.articleSource, { renderer: Renderer })
         return result
-      },
-      types () {
-        if (this.typelist === '' || this.typelist === undefined) {
-          return [{ id: '', name: '请选择' }]
-        } else {
-          return this.typelist
-        }
       }
     },
     methods: {
-      toggle () {
-        this.showWindow = !this.showWindow
-      },
-      addType () {
-        this.showNewTypeInput = !this.showNewTypeInput
-      },
       insertImage () {
         $('#article_upload_image').click()
       },
@@ -144,31 +104,30 @@
           alert('请输入文章内容')
           return
         }
-        if (this.articleType === '' && this.newTypeName === '') {
-          alert('请选择文章类别')
-          return
-        }
-        this.$http.post(URL.articleAdd, {
+        this.$http.post(URL.editArticle, {
           title: this.articleTitle,
           content: this.articleSource,
-          type: this.articleType,
-          newTypeName: this.showNewTypeInput ? this.newTypeName : '' // 如果不显示新标签框，说明不需要添加新标签
+          id: this.$route.params.articleId
         }).then((res) => {
           if (res.data.code === 0) {
-            alert('发表成功！')  //  articleId
+            alert('保存成功！')  //  articleId
             this.$router.push({path: '/article/detail/' + res.data.info})
           } else {
-            alert('发表失败')
+            alert('保存失败')
           }
         })
       }
     },
     mounted () {
-      this.$http.post(URL.articleTypes, {
+      this.$http.post(URL.articleDetail, {
+        article_id: this.$route.params.articleId
       }).then((res) => {
-        if (res.data.code === 0) {
-          this.typelist = res.data.data
+        if (res.data.code !== 0) {
+          alert('数据加载失败')
+          return
         }
+        this.articleSource = res.data.data.content
+        this.articleTitle = res.data.data.title
       })
     }
   }

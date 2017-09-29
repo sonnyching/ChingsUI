@@ -5,6 +5,8 @@ export default {
   articleList: '/api/article/page',
   articleDetail: '/api/article/detail',
   articleAdd: '/api/article/add',
+  newArticle: '/api/article/new',
+  editArticle: '/api/article/edit',
   articleTypes: '/api/article/types',
   supervisor: {
     managerArticles: '/api/article/supervisor/article/list'
