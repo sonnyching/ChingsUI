@@ -71,7 +71,7 @@ const router = [
         component: ArticleManager
       },
       {
-        path: 'add/types',
+        path: 'article/add/types',
         name: 'NewArticle',
         component: NewArticle
       }

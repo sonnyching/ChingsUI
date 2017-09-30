@@ -1,11 +1,11 @@
 <template>
     <div class="new-article-container">
-      <label>请选择文章类型</label>
       <mu-select-field v-model="selectType"  class="new-article-content">
+        <mu-menu-item value="" title="----请选择文章类型----" />
         <mu-menu-item :value="type.id" :title="type.name" v-for="type in typelist" />
       </mu-select-field>
-
-      <mu-raised-button label="保存文章" class="demo-raised-button" primary  @click="newArticle"/>
+      <p></p>
+      <mu-raised-button label="添加新文章" class="demo-raised-button" primary  @click="newArticle()"/>
 
     </div>
 </template>
@@ -20,14 +20,24 @@
         typelist: []
       }
     },
-    method: {
-      newArticle (typeId) { //  创建新文章
+    methods: {
+      newArticle () {
+        if (this.selectType === '') {
+          alert('请选择文章类型')
+          return
+        }
+
         this.$http.post(URL.newArticle, {
-          typeId: typeId
+          typeId: this.selectType
         }).then((res) => {
           if (res.data.code === 0) {
             //  跳转到文章编辑页
-            this.$router.push({path: '/supervisor/home'})
+            this.$router.push({
+              name: 'DesignArticle',
+              params: { //  typeId/:articleId
+                typeId: this.selectType,
+                articleId: res.data.data }
+            })
           }
         })
       }
@@ -53,7 +63,7 @@
   }
 
   .new-article-content{
-    margin: 0 auto;
+    margin: 2rem auto;
   }
 
   .new-article-container label{

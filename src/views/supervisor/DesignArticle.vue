@@ -111,7 +111,7 @@
         }).then((res) => {
           if (res.data.code === 0) {
             alert('保存成功！')  //  articleId
-            this.$router.push({path: '/article/detail/' + res.data.info})
+            this.$router.push({path: '/article/detail/' + this.$route.params.articleId})
           } else {
             alert('保存失败')
           }

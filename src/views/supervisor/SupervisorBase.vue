@@ -7,7 +7,7 @@
 
     <mu-drawer :open="open" :docked="docked" @close="toggleMenu()">
       <mu-list @itemClick="toggleMenu()">
-        <mu-list-item title="新博客" to="/supervisor/addArticle"/>
+        <mu-list-item title="新博客" to="/supervisor/article/add/types"/>
         <mu-list-item title="文章管理" to="/supervisor/articles"/>
         <mu-list-item title="网站统计"/>
         <mu-list-item v-if="docked" @click.native="open = false" title="Close"/>
