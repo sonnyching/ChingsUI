@@ -3,11 +3,6 @@
 
     <router-view></router-view>
 
-    <mu-dialog :open="dialog" title="title" ref="dialog">
-      {{dialogMsg}}
-      <mu-flat-button label="确定" slot="actions" primary @click="closeDialog"/>
-    </mu-dialog>
-
    <!-- <div class="footer">
       Chings ©2017 Created by SonnyChing
     </div>-->
@@ -15,20 +10,14 @@
 </template>
 
 <script>
-  import * as types from './vuex/types'
+//  import * as types from './vuex/types'
   import {mapState} from 'vuex'
   export default {
     name: 'app',
     computed: mapState({
-      dialog: state => state.Dialog.open,
-      dialogMsg: state => state.Dialog.msg,
-      title: state => state.Dialog.tilte,
       showMenu: false
     }),
     methods: {
-      closeDialog () {
-        this.$store.commit(types.DIALOG_CLOSE)
-      }
     }
   }
 </script>

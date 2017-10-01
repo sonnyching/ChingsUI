@@ -1,15 +1,19 @@
 <template>
   <div class="article-design-container">
-    <div class="article_input_area">
-      <input type="file" id="article_upload_image" accept="image/png,image/gif,image/jpeg" @change="uploadpic($event)" style="display: none">
-      <input type="text" class="markdown-editor-header" autofocus v-model="articleTitle" placeholder="标题"/>
-      <ol class="toolbar">
-        <li @click="insertImage" class="fa fa-picture-o"></li>
-        <li @click="save" class="fa fa-floppy-o"></li>
-      </ol>
-      <textarea class="markdown-editor" v-model="articleSource" placeholder="请输入文章内容..."></textarea>
-    </div>
-    <div v-html="resultBody" class="article_show_area"></div>
+    <el-row align="flex-start">
+      <el-col :span="12" >
+        <input type="file" id="article_upload_image" accept="image/png,image/gif,image/jpeg" @change="uploadpic($event)" style="display: none">
+        <input type="text" id="markdown-editor-header" class="markdown-editor-header" autofocus v-model="articleTitle" placeholder="标题"/>
+        <ul class="toolbar" id="article-add-toolbar">
+          <li @click="insertImage" class="fa fa-picture-o"></li>
+          <li @click="save" class="fa fa-floppy-o"></li>
+        </ul>
+        <textarea id="articleSourceObj" class="markdown-editor" v-model="articleSource" placeholder="请输入文章内容..."></textarea>
+      </el-col>
+      <el-col :span="12" class="">
+        <div v-html="resultBody" id="articleSourceShow" class="article_show_area"></div>
+      </el-col>
+    </el-row>
 
     <div class="clearfix"></div>
 
@@ -24,12 +28,16 @@
   import axios from 'axios'
   import $ from 'jquery'
   import constant from '../../constant/constant.js'
+//  import '../../../statics/third/flextext/jquery.flexText.min'
+//  import '../../../statics/third/flextext/style.css'
+
   export default {
     data () {
       return {
         message: {},
         articleSource: '',
-        articleTitle: ''
+        articleTitle: '',
+        areaTextObj: ''
       }
     },
     computed: {
@@ -129,6 +137,16 @@
         this.articleSource = res.data.data.content
         this.articleTitle = res.data.data.title
       })
+
+      var editDivHeight = $('#articleSourceObj').offset().top
+      var bodyHeight = window.screen.availHeight
+      var titleHeight = $('#markdown-editor-header').outerHeight()
+      var toolBarHeight = $('#article-add-toolbar').outerHeight()
+
+      $('#articleSourceObj').height(bodyHeight - editDivHeight)
+      $('#articleSourceShow').height(bodyHeight - editDivHeight + titleHeight + toolBarHeight)
+
+//      console.log(editDivHeight)
     }
   }
 </script>
@@ -139,41 +157,36 @@
 @import "../../../statics/fontawesome/css/font-awesome.min.css";
 
   .article-design-container{
-    width:95%;
-    height: 100%;
-    margin: 0 30px;
+    magin:0 0.5rem;
   }
 
   .markdown-editor-header{
-    width:100%;
+    width:90%;
     border: 0px;
-    height:50px;
+    height:2.5rem;
     font-size: 30px;
-    padding: 30px 30px;
+    padding: 0.5rem 5%;
+    /*padding: 10rem;*/
     outline: none;
     color: #555555;
     font-weight: 400;
-    /*border-bottom: 1px solid #b7b7b7;*/
     font-family: -apple-system, "SF UI Text", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   }
 
   .article-design-container .toolbar{
-    width:100%;
+    /*width:90%;*/
     height:30px;
     background-color: #f9c6f1;
-    /*border-bottom: 1px solid #d9d9d9;*/
     margin: 0px;
+    overflow: hidden;
   }
 
   .toolbar li{
-    /*width: 30px;*/
     height: 100%;
     float: right;
     line-height: 30px;
-    padding: 0px 10px;
-    /*background-color: #ededed;*/
+    padding: 0 0.5rem 0;
     list-style-type: none;
-    /*background:url('../../../static/favicon.ico') no-repeat 4px 5px;*/
   }
 
   .toolbar li:hover {
@@ -183,7 +196,7 @@
   }
 
   .markdown-editor{
-    width:100%;
+    width:96%;
     height: 100%;
     margin-bottom: 0;
     border: none;
@@ -192,35 +205,20 @@
     font-size: 16px;
     font-weight: normal;
     line-height: 30px;
-    height: 460px;
-    padding:10px;
+    /*height: 460px;*/
+    padding:2%;
     outline:none;
   }
 
-  .article_input_area {
-    width: 50%;
-    /*height: 460px;*/
-    float: left;
-  }
-
   .article_show_area{
-    width:50%;
+    width:95%;
+    height: 100%;
     background-color: #fcfaf2;
-    padding:10px;
-    float: left;
-    height: 550px;
+    /*background-color: #fc3f75;*/
+
+    padding:2%;
     font-size: 16px;
     line-height: 20px;
-    overflow-x:auto;
   }
 
-  .popup-add-type{
-    text-align: center;
-  }
-
-  .add_article_save-button{
-    margin: 10px 0px;
-    width:100%;
-    text-align: center;
-  }
 </style>

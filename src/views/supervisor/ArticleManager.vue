@@ -1,42 +1,33 @@
 <template>
     <div class="supervisor-articles">
       <div>
-        <mu-table :height="height" class="supervisor-articles-table"
-                  :fixedFooter="true"
-                  :showCheckbox="false">
-          <mu-thead slot="header">
-            <mu-tr>
-              <mu-th tooltip="序号">序号</mu-th>
-              <mu-th tooltip="文章名称">文章名称</mu-th>
-              <mu-th tooltip="操作1">查看</mu-th>
-              <mu-th tooltip="操作2">编辑</mu-th>
-              <mu-th tooltip="操作3">删除</mu-th>
-            </mu-tr>
-          </mu-thead>
-          <mu-tbody>
-            <mu-tr v-for="item,index in articles"  :key="index" >
-              <mu-td>{{index + 1}}</mu-td>
-              <mu-td class="texthidden">{{item.title}}</mu-td>
-              <mu-td class="article-operation-tools">
-                <i class="fa fa-eye tool-article-detail" @click="articleDetail(item.id)"/>
-              </mu-td>
-              <mu-td class="article-operation-tools">
-                <i class="fa fa-pencil tool-article-edit" @click="editArticle(item.type,item.id)"/>
-              </mu-td>
-              <mu-td class="article-operation-tools">
-                <i class="fa fa-trash-o fa-lg tool-article-delete" @click="deleteArticle(item.id)"/>
-              </mu-td>
-                <!--<i class="fa fa-eye tool-article-detail" @click="articleDetail(item.id)"/>-->
-                <!--<i class="fa fa-pencil fa-fw tool-article-edit" @click="editArticle(item.type,item.id)"/>-->
-                <!--<i class="fa fa-trash-o fa-lg tool-article-delete" @click="deleteArticle(item.id)"/>-->
-              </mu-td>
-            </mu-tr>
-          </mu-tbody>
-          <mu-tfoot slot="footer" >
-            <mu-pagination style="float: right" :total="total" :showSizeChanger="showSizeChanger" @pageSizeChange="handleClick">
-            </mu-pagination>
-          </mu-tfoot>
-        </mu-table>
+
+        <el-table
+          :data="articles"
+          stripe
+          style="width: 100%">
+          <el-table-column
+            type="index"
+            label="序号"
+            width="180">
+          </el-table-column>
+          <el-table-column
+            prop="title"
+            label="文章标题"
+            width="360">
+          </el-table-column>
+          <el-table-column
+            label="操作">
+            <template scope="scope">
+              <div class="article-operation-tools">
+                <i class="fa fa-eye tool-article-detail" @click="articleDetail(scope.row.id)"/>
+                <i class="fa fa-pencil tool-article-edit" @click="editArticle(scope.row.type,scope.row.id)"/>
+                <i class="fa fa-trash-o fa-lg tool-article-delete" @click="deleteArticle(scope.row.id)"/>
+              </div>
+            </template>
+          </el-table-column>
+        </el-table>
+
       </div>
 
     </div>
@@ -113,8 +104,9 @@
 
   .article-operation-tools i{
     /*margin-right: 1.5rem;*/
-    padding:0.5rem;
-
+    /*padding:2rem;*/
+    margin: 0.3rem;
+    padding: 0.3rem;
   }
 
   .tool-article-detail:hover{
@@ -129,12 +121,6 @@
     background-color: #5ac2b8;
   }
 
-  .texthidden{
-    max-width:200px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-  }
 </style>
 
 </style>

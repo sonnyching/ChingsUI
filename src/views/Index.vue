@@ -1,13 +1,9 @@
 <template>
   <div class="ching-index-layout">
-
     <div class="ching-header" >
       <div class="ching-header-title">
         Ching's Sweet Home
       </div>
-      <!--<mu-icon-menu icon="more_vert" style="float: right">-->
-        <!--<mu-menu-item title="管理员登陆" to="/user/login"/>-->
-      <!--</mu-icon-menu>-->
     </div>
 
     <div class="ching-navigator">
@@ -17,13 +13,13 @@
       </ul>
     </div>
 
-    <div class="ching-content">
-      <mu-flexbox align="flex-start" class="ching-index-flex-box">
-        <mu-flexbox-item style="width: 100%">
+    <div class="ching-content ching-index-flex-box">
+      <el-row  align="flex-start">
+        <el-col :span="16" >
           <div class="ching-index-content-wrapper">
             <div v-for=" article in articleList" class="ching-index-content">
-              <!--<span>{{article.createTime}}</span>-->
               <div v-if="article.id !== undefined" class="content-item-wrapper" @click="articleDetail(article.id)">
+                <!--<span>{{article.createTime}}</span>-->
                 <div class="content-item-title">{{article.title}}</div>
                 <div class="content-item-line"></div>
                 <div class="content-item-content">{{article.content}}......</div>
@@ -32,8 +28,8 @@
               </span>
             </div>
           </div>
-        </mu-flexbox-item>
-        <mu-flexbox-item class="ching-index-right-wrapper">
+        </el-col>
+        <el-col :span="6" class="ching-index-right-wrapper">
           <div>
             <div class="ching-index-right-abaout-me">
               <img src="../../statics/images/user_default.jpg" />
@@ -50,8 +46,8 @@
               </ul>
             </div>
           </div>
-        </mu-flexbox-item>
-      </mu-flexbox>
+        </el-col>
+      </el-row>
     </div>
 
    <!-- <div class="ching-footer">
@@ -130,8 +126,9 @@
     /*background-color: #C7B3E5;*/
     background-color: #72d4fb;
     height: 3.6rem;
-    margin-bottom: 0.1rem;
+    /*margin-bottom: 0.1rem;*/
     position: fixed;
+    z-index: 9999;
 
   }
   .ching-header-title{
@@ -145,8 +142,9 @@
   .ching-navigator{
     width:100%;
     /*background-color: #EFCEE8;*/
-    height: 2rem;
+    /*height: 2rem;*/
     margin-bottom: 0rem;
+    height: 3.6rem;
   }
 
   .ching-navigator ul{
@@ -189,8 +187,8 @@
 
   .ching-content{
     padding:0rem 0rem 0rem 0em;
-    width:80%;
-    margin:2.6rem auto 0rem auto;
+    /*width:80%;*/
+    /*margin:2.6rem auto 0rem auto;*/
     max-width: 1080px;
     min-width: 690px;
     padding: 1rem;
@@ -205,7 +203,7 @@
   }
 
   .ching-index-flex-box{
-    width: 100%;
+    /*width: 100%;*/
     margin:0 auto;
   }
 
@@ -219,9 +217,9 @@
   }
 
   .ching-index-right-wrapper{
-    width: 30%;
     margin: 0rem 0rem 0rem 2rem;
-    padding:0rem;
+    padding:0.5rem;
+    max-width: 13rem;
     background-color: white;
     /*background-color: #FDFFDF;*/
 
@@ -230,7 +228,7 @@
   /*文章列表*/
   .ching-index-content{
     color: #000;
-    width:100%;
+    width:90%;
     background-color: white;
     margin: 1rem 0rem;
     padding: 1.2rem;
@@ -269,7 +267,6 @@
 
   .ching-index-right-abaout-me{
     width: 100%;
-    padding:0.5rem;
     margin:0 auto;
     background-color: white;
     text-align: center;

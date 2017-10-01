@@ -2,24 +2,40 @@
   <div id="chings-supervisor">
 
     <header class="ching-supervisor-header">
-      <mu-icon-button icon="menu" slot="left" @click="toggleMenu(true)" class="supervisor-menu"/>
+      <!--<mu-icon-button icon="menu" slot="left" @click="toggleMenu(true)" class="supervisor-menu"/>-->
     </header>
 
-    <mu-drawer :open="open" :docked="docked" @close="toggleMenu()">
-      <mu-list @itemClick="toggleMenu()">
-        <mu-list-item title="新博客" to="/supervisor/article/add/types"/>
-        <mu-list-item title="文章管理" to="/supervisor/articles"/>
-        <mu-list-item title="网站统计"/>
-        <mu-list-item v-if="docked" @click.native="open = false" title="Close"/>
-      </mu-list>
-    </mu-drawer>
-
-    <mu-breadcrumb class="supervisor-breadcrumb" separator=">">
-      <mu-breadcrumb-item href="/">首页</mu-breadcrumb-item>
-      <mu-breadcrumb-item href="/">文章列表</mu-breadcrumb-item>
-    </mu-breadcrumb>
-
-    <router-view></router-view>
+    <el-row  :gutter="10" align="flex-start" class="ching-supervisor-container">
+      <el-col :span="supervisorLeftWidth" >
+        <el-menu default-active="1-4-1" class="ching-supervisor-menu-list"
+                 :collapse="isCollapse">
+          <el-submenu index="1">
+            <template slot="title">
+              <i class="el-icon-message"></i>
+              <span slot="title">导航</span>
+            </template>
+            <el-menu-item-group>
+              <span slot="title">文章管理</span>
+              <el-menu-item index="1-1" @click="$router.push('/supervisor/articles')">文章列表</el-menu-item>
+              <el-menu-item index="1-2" @click="$router.push('/supervisor/article/add/types')">新建文章</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
+              <span slot="title">站点统计</span>
+              <el-menu-item index="1-3">统计数据</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+          <el-menu-item index="2" @click="toggleMenu">
+            <template slot="title">
+              <i class="el-icon-close"></i>
+              <span slot="title">隐藏/显示</span>
+            </template>
+          </el-menu-item>
+        </el-menu>
+      </el-col>
+      <el-col :span="supervisorRightWidth" >
+        <router-view></router-view>
+      </el-col>
+    </el-row>
 
   </div>
 </template>
@@ -29,14 +45,21 @@
     name: 'app',
     data () {
       return {
-        open: false,
-        docked: false
+        isCollapse: false,
+        supervisorLeftWidth: 4,
+        supervisorRightWidth: 20
       }
     },
     methods: {
-      toggleMenu (flag) {
-        this.open = !this.open
-        this.docked = !flag
+      toggleMenu () {
+        if (this.isCollapse) {
+          this.supervisorLeftWidth = 4
+          this.supervisorRightWidth = 20
+        } else {
+          this.supervisorLeftWidth = 2
+          this.supervisorRightWidth = 22
+        }
+        this.isCollapse = !this.isCollapse
       }
     }
   }
@@ -50,21 +73,13 @@
     background-color: #f9c6f1;
   }
 
-  .ching-supervisor-header .supervisor-menu{
-    line-height: 1rem;
+  .ching-supervisor-container{
+    padding:1rem;
   }
 
-  .supervisor-breadcrumb{
-    font-size:15px;
-    margin: 1rem 3rem;
+  .ching-supervisor-menu-list{
+    /*max-width: 2rem;*/
   }
 
-  .supervisor-breadcrumb a{
-    color: #4f4f4f;
-  }
-
-  .supervisor-breadcrumb .mu-breadcrumb-item-separator{
-    color: #cc54d9;
-  }
 
 </style>

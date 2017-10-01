@@ -3,9 +3,11 @@
     <div class="login_box">
      <div class="content">
        <img src="../../../statics/images/user_default.jpg"/>
-       <mu-text-field hintText="用户名" v-model="name"/><br/>
-       <mu-text-field hintText="密码" type="password" v-model="password"/><br/>
-       <mu-raised-button label="登陆" @click="login()" class="demo-raised-button" primary/>
+       <el-input placeholder="请输入用户名..." v-model="name" class="ching-login-input">
+       </el-input>
+       <el-input placeholder="请输入密码..." type="password" v-model="password" class="ching-login-input">
+       </el-input>
+       <el-button type="primary" @click="login()" class="ching-login-raised-button">Login</el-button>
      </div>
     </div>
   </div>
@@ -28,6 +30,14 @@
     },
     methods: {
       login () {
+        if (this.name === '') {
+          alert('请输入用户名')
+          return
+        }
+        if (this.password === '') {
+          alert('请输入密码')
+          return
+        }
         this.$http.post(URL.login, {
           password: this.password,
           name: this.name
@@ -62,7 +72,6 @@
   }
 
   .login_box .content{
-
     width:400px;
     height: 100%;
     border-radius: 3px;
@@ -71,4 +80,14 @@
     margin:0 auto;
   }
 
+  .ching-login-input{
+    max-width:15rem;
+    margin: 0.5rem 1rem;
+  }
+
+  .ching-login-raised-button{
+    max-width:15rem;
+    display: block;
+    margin:0 auto;
+  }
 </style>

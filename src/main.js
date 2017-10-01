@@ -4,18 +4,39 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from './utils/httputil'
-import MuseUI from 'muse-ui'
 import Vuex from 'vuex'
 import store from './vuex/index'
 import VueRouter from 'vue-router'
 import 'jquery'
-import 'muse-ui/dist/muse-ui.css'
 import '../statics/common/common.css'
 import URL from '../src/utils/Interface'
 import HTTP from '../src/utils/httputil'
+import 'element-ui/lib/theme-default/index.css'
+import { Button, Select, Row, Col, Input, Menu,
+  Submenu, MenuItem, MenuItemGroup, Option,
+  TableColumn, Table, Tooltip} from 'element-ui'
+import 'normalize.css'
 
-Vue.use(MuseUI)
+// Vue.use(MuseUI)
 Vue.use(Vuex)
+
+Vue.use(Button)
+Vue.use(Select)
+Vue.use(Option)
+
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Input)
+
+Vue.use(Menu)
+Vue.use(Submenu)
+Vue.use(MenuItem)
+Vue.use(MenuItemGroup)
+
+Vue.use(TableColumn)
+Vue.use(Table)
+
+Vue.use(Tooltip)
 
 Vue.use(VueRouter)
 

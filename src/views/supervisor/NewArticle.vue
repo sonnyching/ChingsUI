@@ -1,11 +1,17 @@
 <template>
     <div class="new-article-container">
-      <mu-select-field v-model="selectType"  class="new-article-content">
-        <mu-menu-item value="" title="----请选择文章类型----" />
-        <mu-menu-item :value="type.id" :title="type.name" v-for="type in typelist" />
-      </mu-select-field>
+
+      <el-select v-model="selectType" placeholder="请选择文章类型">
+        <el-option
+          v-for="type in typelist"
+          :label="type.name"
+          :value="type.id">
+        </el-option>
+      </el-select>
+
       <p></p>
-      <mu-raised-button label="添加新文章" class="demo-raised-button" primary  @click="newArticle()"/>
+
+      <el-button type="primary" @click="newArticle()" class="ching-login-raised-button">添加新文章</el-button>
 
     </div>
 </template>
@@ -56,9 +62,9 @@
 <style>
 
   .new-article-container{
-    width: 80%;
+    width: 100%;
     height: 100%;
-    margin: 0 auto;
+    margin: 10rem auto;
     text-align: center;
   }
 
