@@ -11,13 +11,21 @@
 
 <script>
 //  import * as types from './vuex/types'
-  import {mapState} from 'vuex'
+//  import {mapState} from 'vuex'
+  import $ from 'jquery'
+
   export default {
     name: 'app',
-    computed: mapState({
-      showMenu: false
-    }),
+//    computed: mapState({
+//      showMenu: false
+//    }),
     methods: {
+    },
+    mounted () {
+      //  首页加载完成
+      this.$nextTick(function () {
+        $('#ching-index-Loading-img').hide()
+      })
     }
   }
 </script>
@@ -30,29 +38,11 @@
   /*color: #2c3e50;*/
 }
 
-body {
-  line-height: 1;
-}
-ol, ul {
-  list-style: none;
-}
-blockquote, q {
-  quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
 body{
   /*background-color: #e5e5e5;*/
   /*background-color: white;*/
   background-color: rgba(248, 248, 248, 0.99);
 
 }
+
 </style>

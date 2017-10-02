@@ -5,11 +5,32 @@
     <title>me&you&chi </title>
     <!--<meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>-->
   </head>
+  <style>
+    #ching-index-Loading-img { width: 100%; height: 100%;text-align: center;padding:2rem 0rem; }
+    #ching-index-Loading-img span{
+      /*margin: 2rem;*/
+      font-size: 1.5rem;
+      color: #5ac2b8;
+    }
+    #ching-index-Loading-img img{
+      z-index: 9999;
+      /*background: url("/statics/images/user_default.jpg") no-repeat;*/
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      -webkit-transform: translateY(-50%)  translateX(-50%);
+      transform: translateY(-50%)  translateX(-50%);
+    }
+  </style>
 
   <link rel="shortcut icon" type="image/png" href="./statics/favicon.ico"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <body>
+    <div id="ching-index-Loading-img">
+      <span>再等等，小起就快出生了！</span>
+      <img id="" src="/statics/images/index-loading.gif">
+    </div>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>

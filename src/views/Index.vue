@@ -77,7 +77,6 @@
 <script>
   import API from '../utils/Interface'
   import {Marked, Renderer} from '../../statics/common/markdown'
-
   export default {
     name: 'hello',
     data () {
