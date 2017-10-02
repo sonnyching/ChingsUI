@@ -3,6 +3,10 @@
 
     <router-view></router-view>
 
+  <!--  <div class="float-menu" draggable="true">
+      <i class="fa fa-paper-plane-o"></i>
+    </div>-->
+
    <!-- <div class="footer">
       Chings ©2017 Created by SonnyChing
     </div>-->
@@ -31,18 +35,32 @@
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /*color: #2c3e50;*/
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /*color: #2c3e50;*/
+  }
 
-body{
-  /*background-color: #e5e5e5;*/
-  /*background-color: white;*/
-  background-color: rgba(248, 248, 248, 0.99);
+  body{
+    background-color: rgba(248, 248, 248, 0.99);
+  }
 
-}
+/*  .float-menu{
+    background-color: #bdbdbd;
+    width: 3rem;
+    height: 3rem;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    text-align: center;
+    border-radius: 50% 50%;
+  }
+
+  .float-menu i{
+    width:100%;
+    height:100%;
+    margin-top: 1rem;
+  }*/
 
 </style>

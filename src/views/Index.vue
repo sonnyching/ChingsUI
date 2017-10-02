@@ -2,9 +2,12 @@
   <div class="ching-index-layout">
     <!--header-->
     <div class="ching-header" >
-      <div class="ching-header-title">
+      <span class="ching-header-title" @click="$router.push('/')">
         Ching
-      </div>
+      </span>
+      <span class="ching-header-about-me" @click="showMeVisible = !showMeVisible">
+        关于
+      </span>
     </div>
 
     <div class="ching-navigator">
@@ -63,6 +66,18 @@
       </el-row>
     </div>
 
+    <el-dialog
+      title="AboutMe"
+      size="large"
+      :visible.sync="showMeVisible">
+      <img src="../../statics/images/user_default.jpg">
+        <div class="ching-header-about-me-text">
+          <span>I'm SonnyChing,Chi is My Son, You are Always Be Mine,And I Miss You.</span>
+          <div>email:837551773@qq.com</div>
+          <span slot="footer" class="dialog-footer"></span>
+        </div>
+    </el-dialog>
+
    <!-- <div class="ching-footer">
       <div class="copyright">
         Copyright © 2011-2017 idays.cc
@@ -85,7 +100,8 @@
         currentPage: 1,
         page: {},
         loadingFlag: true,
-        loadMoreText: '加载更多'
+        loadMoreText: '加载更多',
+        showMeVisible: false
       }
     },
     methods: {
@@ -203,6 +219,7 @@
     /*margin-bottom: 0.1rem;*/
     position: fixed;
     z-index: 9999;
+    color: white;
 
   }
   .ching-header-title{
@@ -210,8 +227,14 @@
     margin: 0 1rem;
     font-family: Cursive,Lucida Grande, Lucida Sans Unicode, Helvetica, Arial, Verdana, sans-serif;
     font-size: 1.5rem;
-    color: white;
   }
+
+  .ching-header-about-me{
+    float: right;
+    line-height: 3.6rem;
+    margin: 0 1rem;
+  }
+
 
   .ching-navigator{
     width:100%;
@@ -309,7 +332,7 @@
   .ching-index-content{
     color: #000;
     width:100%;
-    margin:0.5rem auto;
+    margin:0.6rem auto ;
     background-color: white;
     /*margin: 0.5rem 0rem;*/
     padding: 1.2rem 0rem;
@@ -435,6 +458,7 @@
   .ching-index-load-more{
     text-align: center;
     width: 100%;
+    margin: 1rem 0;
   }
   .ching-index-load-more span{
     margin: 3rem;
@@ -447,5 +471,21 @@
     color: #bdbdbd;
     cursor: pointer;
   }
+
+  .ching-header-title:hover{
+    cursor: pointer;
+  }
+
+  .ching-header-about-me-text{
+    font-size: 1rem;
+    line-height: 1.4rem;
+    word-break: break-all;
+    text-indent: 2rem;
+  }
+
+  .ching-header-about-me-text img{
+    margin:0 auto;
+  }
+
 
 </style>

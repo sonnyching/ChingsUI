@@ -14,7 +14,7 @@ import HTTP from '../src/utils/httputil'
 import 'element-ui/lib/theme-default/index.css'
 import { Button, Select, Row, Col, Input, Menu,
   Submenu, MenuItem, MenuItemGroup, Option,
-  TableColumn, Table, Tooltip, Pagination, Loading} from 'element-ui'
+  TableColumn, Table, Tooltip, Pagination, Loading, Dialog} from 'element-ui'
 import 'normalize.css'
 
 // Vue.use(MuseUI)
@@ -39,6 +39,8 @@ Vue.use(MenuItemGroup)
 
 Vue.use(TableColumn)
 Vue.use(Table)
+
+Vue.use(Dialog)
 
 Vue.use(Tooltip)
 

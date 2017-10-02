@@ -1,7 +1,7 @@
 <template id='article'>
   <div>
 
-    <div class="ching-article-header" >
+    <div class="ching-article-header" @click="$router.push('/')">
       <div class="ching-article-header-title">
         Ching
       </div>
@@ -41,5 +41,9 @@ export default {
   .ching-article-body{
     margin-top: 1rem;
   }*/
+
+  .ching-article-header-title:hover{
+    cursor: pointer;
+  }
 
 </style>
