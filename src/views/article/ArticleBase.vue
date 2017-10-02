@@ -3,7 +3,7 @@
 
     <div class="ching-article-header" >
       <div class="ching-article-header-title">
-        Ching's Sweet Home
+        Ching
       </div>
     </div>
 

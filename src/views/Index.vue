@@ -3,7 +3,7 @@
     <!--header-->
     <div class="ching-header" >
       <div class="ching-header-title">
-        Ching's Sweet Home
+        Ching
       </div>
     </div>
 
@@ -14,10 +14,10 @@
       </ul>
     </div>
 
-    <div class="ching-content ching-index-flex-box">
+    <div class="ching-content">
       <el-row  align="flex-start" >
         <!--左侧文章列表-->
-        <el-col :span="16" >
+        <el-col :span="24" >
           <div class="ching-index-content-wrapper">
             <div v-for=" article in articleList" class="ching-index-content">
               <div v-if="article.id !== undefined" class="content-item-wrapper" @click="articleDetail(article.id)">
@@ -41,8 +41,8 @@
             :total="page.totalRows">
           </el-pagination>-->
         </el-col>
-        <el-col :span="6" class="ching-index-right-wrapper">
-          <!--右侧我的信息-->
+       <!-- <el-col :span="6" class="ching-index-right-wrapper">
+          &lt;!&ndash;右侧我的信息&ndash;&gt;
           <div>
             <div class="ching-index-right-abaout-me">
               <img src="../../statics/images/user_default.jpg" />
@@ -59,7 +59,7 @@
               </ul>
             </div>
           </div>
-        </el-col>
+        </el-col>-->
       </el-row>
     </div>
 
@@ -187,7 +187,7 @@
   @import "../../statics/fontawesome/css/font-awesome.min.css";
 
   .ching-index-layout{
-    min-width: 400px;
+    /*min-width: 400px;*/
     /*max-width: 900px;*/
     width: 100%;
     margin:0 auto;
@@ -264,8 +264,10 @@
     /*width:80%;*/
     /*margin:2.6rem auto 0rem auto;*/
     max-width: 1080px;
-    min-width: 690px;
-    padding: 1rem;
+    margin:0 auto;
+
+    /*min-width: 690px;*/
+    /*padding: 1rem;*/
     /*margin-top: 3.6rem;*/
     /*box-shadow: 1px 1px 1px #888888;*/
   }
@@ -276,18 +278,22 @@
     /*background-size:cover;*/
   }
 
+  .content-item-wrapper{
+    padding: 0rem 0.4rem;
+  }
+
   .ching-index-flex-box{
     /*width: 100%;*/
-    margin:0 auto;
+    /*margin:0 auto;*/
   }
 
 
   .ching-index-content-wrapper{
-    background-color: white;
-    border: 1px solid #eeeeee;
-    width: 100%;
-    margin: 0 0rem ;
-    padding: 0.4rem;
+    /*background-color: white;*/
+    /*background-color: #ff3a44;*/
+    /*border: 1px solid #eeeeee;*/
+    /*width: 100%;*/
+    /*padding: 0.4rem 0.6rem;*/
   }
 
   .ching-index-right-wrapper{
@@ -302,15 +308,19 @@
   /*文章列表*/
   .ching-index-content{
     color: #000;
-    width:90%;
+    width:100%;
+    margin:0.5rem auto;
     background-color: white;
-    margin: 1rem 0rem;
-    padding: 1.2rem;
+    /*margin: 0.5rem 0rem;*/
+    padding: 1.2rem 0rem;
+    max-width: 50rem;
     line-height: 1.3rem;
     font-family: '微软雅黑';
+    border-bottom:0.05rem solid #dadada;
     word-break: break-all;
+    /*box-shadow: 0rem 0.1rem 0.1rem #888888;*/
     /*border: 1px solid #EFCEE8;*/
-    border-bottom: 1px solid #eeeeee;
+    /*border-bottom: 1px solid #eeeeee;*/
     /*border-radius: 0.5rem;*/
 
   }
@@ -327,12 +337,15 @@
     font-size: 1.2rem;
     font-weight: 300;
     margin-bottom: 0.8rem;
+    padding: 0 1rem;
+    line-height: 1.6rem;
   }
 
   .content-item-content{
     font-size: 0.9rem;
     font-weight: 300;
     line-height: 1.4rem;
+    padding: 0 1rem;
   }
 
 
@@ -432,6 +445,7 @@
 
   .ching-index-load-more span:hover{
     color: #bdbdbd;
+    cursor: pointer;
   }
 
 </style>
