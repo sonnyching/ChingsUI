@@ -1,5 +1,6 @@
 <template>
   <div class="ching-index-layout">
+    <!--header-->
     <div class="ching-header" >
       <div class="ching-header-title">
         Ching's Sweet Home
@@ -14,7 +15,8 @@
     </div>
 
     <div class="ching-content ching-index-flex-box">
-      <el-row  align="flex-start">
+      <el-row  align="flex-start" >
+        <!--左侧文章列表-->
         <el-col :span="16" >
           <div class="ching-index-content-wrapper">
             <div v-for=" article in articleList" class="ching-index-content">
@@ -27,9 +29,20 @@
               </div>
               </span>
             </div>
+            <div @click="handleCurrentChange()" class="ching-index-load-more" v-loading="loadingFlag"><span>{{loadMoreText}}</span></div>
           </div>
+          <!--分页-->
+        <!--  <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page.sync="page.currentPage"
+            :page-size="page.pageSize"
+            layout="total, prev, pager, next"
+            :total="page.totalRows">
+          </el-pagination>-->
         </el-col>
         <el-col :span="6" class="ching-index-right-wrapper">
+          <!--右侧我的信息-->
           <div>
             <div class="ching-index-right-abaout-me">
               <img src="../../statics/images/user_default.jpg" />
@@ -70,7 +83,10 @@
     data () {
       return {
         articleList: [],
-        currentPage: 1
+        currentPage: 1,
+        page: {},
+        loadingFlag: true,
+        loadMoreText: '加载更多'
       }
     },
     methods: {
@@ -89,12 +105,66 @@
         str = str.replace(/\n[\s| | ]*\r/g, '\n') // 去除多余空行
         str = str.replace(/&nbsp;/ig, '') // 去掉&nbsp;
         return str
+      },
+      handleSizeChange (val) {
+//        console.log(`每页 ${val} 条`)
+      },
+      //  切换页码
+      handleCurrentChange (val) {
+        if (this.page.hasNextPage === false) {
+          this.loadMoreText = '🌚 老铁我跟你港啊，没饭了...'
+          return
+        }
+
+        this.loadingFlag = true
+
+        this.currentPage++
+        this.$http.post(API.articleList, {currentPage: this.currentPage})
+          .then((res) => {
+            var tempList = res.data.data.list
+
+            if (tempList === undefined || tempList.length <= 0) {
+              this.loadMoreText = '没有更多啦 ╮(￣▽￣)╭'
+              this.currentPage--
+              this.loadingFlag = false
+              return
+            }
+
+            for (var i = 0; i < tempList.length; i++) {
+              const content = tempList[i].content
+              const result = Marked(content, { renderer: Renderer })
+              tempList[i].content = this.removeHTMLTag(result)
+            }
+
+            for (var j = 0; j < tempList.length; j++) {
+              this.articleList.push(tempList[j])
+            }
+
+            this.page = res.data.data
+            this.loadingFlag = false
+            this.loadMoreText = '老板娘，加饭 (～￣▽￣)～'
+//            scrollTo(0, 0)
+          })
+          .catch(() => {
+//            console.log(error)
+            this.loadingFlag = false
+            this.loadMoreText = '我也好着急，但素就是加载不出来嘛！ 😱'
+            this.currentPage--
+          })
       }
     },
     mounted () {
+      this.loadingFlag = true
       this.$http.post(API.articleList, {currentPage: this.currentPage})
         .then((res) => {
           var tempList = res.data.data.list
+
+          if (tempList === undefined || tempList.length <= 0) {
+            this.loadMoreText = '🌚 纳尼，服务器又挂了嘛，真是见鬼了'
+            this.loadingFlag = false
+            return
+          }
+
           for (var i = 0; i < tempList.length; i++) {
             const content = tempList[i].content
             const result = Marked(content, { renderer: Renderer })
@@ -102,9 +172,14 @@
           }
 
           this.articleList = tempList
+          this.page = res.data.data
+          this.loadingFlag = false
+          this.loadMoreText = '老板娘，加饭 (～￣▽￣)～'
         })
-        .catch((error) => {
-          console.log(error)
+        .catch(() => {
+//          console.log(error)
+          this.loadingFlag = false
+          this.loadMoreText = '/(ㄒoㄒ)/~~我也好着急，但素就是加载不出来嘛！要不再戳我试试！'
         })
     }
 }
@@ -343,6 +418,21 @@
   .click-btns a{
     width: 100%;
     height: 100%;
+  }
+
+  .ching-index-load-more{
+    text-align: center;
+    width: 100%;
+  }
+  .ching-index-load-more span{
+    margin: 3rem;
+    color: #929292;
+    line-height: 1.6rem;
+    font-size: 1.0rem;
+  }
+
+  .ching-index-load-more span:hover{
+    color: #bdbdbd;
   }
 
 </style>

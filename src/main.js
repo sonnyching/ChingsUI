@@ -14,15 +14,19 @@ import HTTP from '../src/utils/httputil'
 import 'element-ui/lib/theme-default/index.css'
 import { Button, Select, Row, Col, Input, Menu,
   Submenu, MenuItem, MenuItemGroup, Option,
-  TableColumn, Table, Tooltip} from 'element-ui'
+  TableColumn, Table, Tooltip, Pagination, Loading} from 'element-ui'
 import 'normalize.css'
 
 // Vue.use(MuseUI)
 Vue.use(Vuex)
 
+Vue.use(Pagination)
+
 Vue.use(Button)
 Vue.use(Select)
 Vue.use(Option)
+
+Vue.use(Loading)
 
 Vue.use(Row)
 Vue.use(Col)
