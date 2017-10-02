@@ -49,8 +49,8 @@
     width:100%;
     max-width: 960px;
     min-width: 640px;
-    margin: 0 auto;
-    padding-top: 2rem;
+    margin: 0rem auto;
+    padding-top: 5rem;
     padding-bottom: 2rem;
   }
 
