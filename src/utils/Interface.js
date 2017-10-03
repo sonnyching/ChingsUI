@@ -7,6 +7,8 @@ export default {
   articleAdd: '/api/article/add',
   newArticle: '/api/article/new',
   editArticle: '/api/article/edit',
+  articleOn: '/api/article/articleOn',
+  articleOff: '/api/article/articleOff',
   deleteArticle: '/api/article/delete',
   articleTypes: '/api/article/types',
   supervisor: {

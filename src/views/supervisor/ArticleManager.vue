@@ -9,7 +9,14 @@
           <el-table-column
             type="index"
             label="序号"
-            width="180">
+            width="80">
+          </el-table-column>
+          <el-table-column
+            label="状态"
+            width="80">
+            <template scope="scope">
+              <span>{{scope.row.status===1?'上架中':'已下架'}}</span>
+            </template>
           </el-table-column>
           <el-table-column
             prop="title"
@@ -23,6 +30,8 @@
                 <i class="fa fa-eye tool-article-detail" @click="articleDetail(scope.row.id)"/>
                 <i class="fa fa-pencil tool-article-edit" @click="editArticle(scope.row.type,scope.row.id)"/>
                 <i class="fa fa-trash-o fa-lg tool-article-delete" @click="deleteArticle(scope.row.id)"/>
+                <i class="fa fa-toggle-off " @click="articleOff(scope.row.id)"/>
+                <i class="fa fa-toggle-on " @click="articleOn(scope.row.id)"/>
               </div>
             </template>
           </el-table-column>
@@ -66,6 +75,28 @@
           params: {
             typeId: typeId,
             articleId: articleId
+          }
+        })
+      },
+      articleOff (id) {
+        this.$http.post(URL.articleOff, {
+          articleId: id
+        }).then((res) => {
+          if (res.data.code === 0) {
+            alert('下架处理成功！')
+          } else {
+            alert('下架处理失败！')
+          }
+        })
+      },
+      articleOn (id) {
+        this.$http.post(URL.articleOn, {
+          articleId: id
+        }).then((res) => {
+          if (res.data.code === 0) {
+            alert('上架成功！')
+          } else {
+            alert('上架失败！')
           }
         })
       },
