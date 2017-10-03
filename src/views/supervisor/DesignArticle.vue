@@ -215,6 +215,7 @@
     height: 100%;
     background-color: #fcfaf2;
     /*background-color: #fc3f75;*/
+    overflow-y: auto;
 
     padding:2%;
     font-size: 16px;
