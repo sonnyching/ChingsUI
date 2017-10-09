@@ -44,6 +44,9 @@
 
   body{
     background-color: rgba(248, 248, 248, 0.99);
+    font-size: 10px;
+    font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+
   }
 
 /*  .float-menu{

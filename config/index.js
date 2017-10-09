@@ -1,7 +1,7 @@
 var path = require('path')
 
-// var proxy_ip = 'http://192.168.31.170:8080/'  //  寝室
-var proxy_ip = 'http://192.168.200.102:8080/'  //  homes
+var proxy_ip = 'http://192.168.31.170:8080/'  //  寝室
+// var proxy_ip = 'http://192.168.200.102:8080/'  //  homes
 
 // var proxy_ip = 'http://192.168.16.120:8080/'  //  公司
 // var proxy_ip = 'http://www.idays.cc:8080/chings/'  //

@@ -5,9 +5,9 @@
       <span class="ching-header-title" @click="$router.push('/')">
         Ching
       </span>
-      <span class="ching-header-about-me" @click="showMeVisible = !showMeVisible">
-        关于
-      </span>
+      <!--<span class="ching-header-about-me" @click="showMeVisible = !showMeVisible">-->
+        <!--关于-->
+      <!--</span>-->
     </div>
 
     <div class="ching-navigator">
@@ -28,7 +28,10 @@
                 <div class="content-item-title">{{article.title}}</div>
                 <div class="content-item-line"></div>
                 <div class="content-item-content">{{article.content}}......</div>
-                <div class="content-item-end"></div>
+                <div class="content-item-end">
+                  <span class="article-views">12312 views</span>
+                  <span class="article-time">{{article.createTime}}</span>
+                </div>
               </div>
               </span>
             </div>
@@ -97,7 +100,7 @@
     data () {
       return {
         articleList: [],
-        currentPage: 1,
+        currentPage: 0,
         page: {},
         loadingFlag: true,
         loadMoreText: '加载更多',
@@ -170,6 +173,8 @@
     },
     mounted () {
       this.loadingFlag = true
+      this.currentPage++
+
       this.$http.post(API.articleList, {currentPage: this.currentPage})
         .then((res) => {
           var tempList = res.data.data.list
@@ -177,6 +182,7 @@
           if (tempList === undefined || tempList.length <= 0) {
             this.loadMoreText = '🌚 纳尼，服务器又挂了嘛，真是见鬼了'
             this.loadingFlag = false
+            this.currentPage--
             return
           }
 
@@ -195,6 +201,7 @@
 //          console.log(error)
           this.loadingFlag = false
           this.loadMoreText = '/(ㄒoㄒ)/~~我也好着急，但素就是加载不出来嘛！要不再戳我试试！'
+          this.currentPage--
         })
     }
 }
@@ -225,7 +232,6 @@
   .ching-header-title{
     line-height: 3.6rem;
     margin: 0 1rem;
-    font-family: Cursive,Lucida Grande, Lucida Sans Unicode, Helvetica, Arial, Verdana, sans-serif;
     font-size: 1.5rem;
   }
 
@@ -330,7 +336,7 @@
 
   /*文章列表*/
   .ching-index-content{
-    color: #000;
+    color: #575757;
     width:100%;
     margin:0.6rem auto ;
     background-color: white;
@@ -338,9 +344,10 @@
     padding: 1.2rem 0rem;
     max-width: 50rem;
     line-height: 1.3rem;
-    font-family: '微软雅黑';
     border-bottom:0.05rem solid #dadada;
     word-break: break-all;
+    border-left: 0.2rem solid #aedeee;
+
     /*box-shadow: 0rem 0.1rem 0.1rem #888888;*/
     /*border: 1px solid #EFCEE8;*/
     /*border-bottom: 1px solid #eeeeee;*/
@@ -352,26 +359,60 @@
     cursor: pointer;
     /*background-color: #DAF9CA;*/
     /*color: #7e57c2;*/
-    font-size: large;
-    color: #929292;
+    /*color: #929292;*/
+    background-color: #e7e7e7;
   }
 
   .content-item-title{
-    font-size: 1.2rem;
-    font-weight: 300;
+    font-size: 1.4rem;
+    font-weight: 400;
     margin-bottom: 0.8rem;
-    padding: 0 1rem;
-    line-height: 1.6rem;
+    padding: 0 2rem;
+    margin-left: 1rem;
+    line-height: 1.9rem;
+    background: url("../../statics/images/arrow.png") no-repeat;
   }
 
   .content-item-content{
-    font-size: 0.9rem;
+    font-size: 1.0rem;
     font-weight: 300;
     line-height: 1.4rem;
     padding: 0 1rem;
   }
 
+  .content-item-end{
+    overflow: hidden;
+  }
 
+  .content-item-end span{
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    margin-right: 1rem;
+    font-size: 0.8rem;
+    color: #767676;
+    float: right;
+    padding: 0.2rem 0rem 0.2rem 1.7rem;
+  }
+
+  .article-time{
+    background: url(../../statics/images/clock.png) no-repeat left center;
+  }
+
+  .article-views{
+    background: url(../../statics/images/eye.png) no-repeat left center;
+  }
+
+
+
+  .article-type{
+    background-color: #5bdef5;
+    /*background-image: url("../../statics/images/bubble.png");*/
+    background-size:100% 100%;
+    color: #ffffff;
+    font-size: 0.1rem;
+    padding:0.4rem;
+    border-radius: 1rem;
+  }
 
   /*右侧区域*/
 

@@ -2,7 +2,7 @@
   <div class="article-detail-container">
     <div class="article-detail-body">
       <div class="article_detail_title">{{title}}</div>
-      <div class="article_detail_header"> {{time}} {{author}}</div>
+      <div class="article_detail_header"> <span class="header-time">{{time}}</span></div>
       <div v-html="resultBody" class="article-content"></div>
     </div>
   </div>
@@ -35,7 +35,7 @@
         this.resultBody = Marked(res.data.data.content, { renderer: Renderer })
         this.title = res.data.data.title
         this.author = res.data.data.authorName
-//        this.time = res.data.data.createTime
+        this.time = res.data.data.createTime
       })
     }
   }
@@ -66,15 +66,22 @@
   }
 
   .article_detail_title{
-    font-size: 30px;
+    font-size: 1.7rem;
     text-align: center;
     font-weight: 500;
   }
 
   .article_detail_header{
-    margin: 20px;
+    margin: 1rem;
     text-align: center;
+    font-size: 0.7rem;
   }
+
+  .header-time{
+    /*padding: 0.4rem 1.6rem;*/
+    /*background: url("../../../statics/images/clock.png" ) no-repeat left;*/
+  }
+
 }
 
 @media screen and (min-width: 601px) {
@@ -95,16 +102,17 @@
     padding: 2rem;
     margin:0 auto;
     border-radius: 1px;
+    font-size: 1rem;
   }
 
   .article_detail_title{
-    font-size: 30px;
+    font-size: 2rem;
     text-align: center;
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .article_detail_header{
-    margin: 20px;
+    margin: 1.2rem;
     text-align: center;
   }
 }
