@@ -44,7 +44,12 @@
 
 <script type="text/ecmascript-6">
   import URL from '../../utils/Interface'
+//  import {TableColumn, Table} from 'element-ui'
   export default {
+    components: {
+//      'el-table': TableColumn,
+//      'el-table-column': Table
+    },
     data () {
       return {
         articles: [],
@@ -117,6 +122,7 @@
         keywords: this.selectKeyWords
       }).then((res) => {
         this.articles = res.data.data
+//        console.log(this.articles)
       })
     }
   }

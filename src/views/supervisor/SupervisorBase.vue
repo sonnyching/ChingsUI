@@ -41,8 +41,18 @@
 </template>
 
 <script>
+  import { Menu, MenuItem, Submenu, MenuItemGroup, Row, Col, Tooltip } from 'element-ui'
+
   export default {
-    name: 'app',
+    components: {
+      'el-menu-item': MenuItem,
+      'el-row': Row,
+      'el-col': Col,
+      'el-menu-item-group': MenuItemGroup,
+      'el-submenu': Submenu,
+      'el-menu': Menu,
+      Tooltip
+    },
     data () {
       return {
         isCollapse: false,

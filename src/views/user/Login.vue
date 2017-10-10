@@ -19,7 +19,12 @@
 //  import $ from 'jquery'
   import URL from '../../utils/Interface'
 //  import * as types from '../../vuex/types'
+  import {Input, Button} from 'element-ui'
   export default {
+    components: {
+      'el-input': Input,
+      'el-button': Button
+    },
     data () {
       return {
         name: '',

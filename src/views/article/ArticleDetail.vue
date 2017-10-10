@@ -12,6 +12,8 @@
 <script type="text/ecmascript-6">
   import URL from '../../utils/Interface'
   import {Marked, Renderer} from '../../../statics/common/markdown'
+  import $ from 'jquery'
+
   export default {
     data () {
       return {
@@ -36,6 +38,10 @@
         this.title = res.data.data.title
         this.author = res.data.data.authorName
         this.time = res.data.data.createTime
+      })
+      //  加载完成
+      this.$nextTick(function () {
+        $('#ching-index-Loading-img').hide()
       })
     }
   }

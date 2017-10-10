@@ -95,6 +95,9 @@
 <script>
   import API from '../utils/Interface'
   import {Marked, Renderer} from '../../statics/common/markdown'
+  import { Dialog, Row, Col, Loading } from 'element-ui'
+  import $ from 'jquery'
+
   export default {
     name: 'hello',
     data () {
@@ -107,11 +110,23 @@
         showMeVisible: false
       }
     },
+    components: {
+      'el-dialog': Dialog,
+      'el-row': Row,
+      'el-col': Col
+    },
+    directives: {
+      Loading
+    },
     methods: {
       handleTabChange (val) {
         this.activeTab = val
       },
       articleDetail (id) {
+        //  加载动画
+        this.$nextTick(function () {
+          $('#ching-index-Loading-img').show()
+        })
         this.$router.push({path: '/article/detail/' + id})
       },
       url (url) {
@@ -203,6 +218,11 @@
           this.loadMoreText = '/(ㄒoㄒ)/~~我也好着急，但素就是加载不出来嘛！要不再戳我试试！'
           this.currentPage--
         })
+
+      //  加载完成
+      this.$nextTick(function () {
+        $('#ching-index-Loading-img').hide()
+      })
     }
 }
 </script>

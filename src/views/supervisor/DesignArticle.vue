@@ -28,10 +28,15 @@
   import axios from 'axios'
   import $ from 'jquery'
   import constant from '../../constant/constant.js'
+  import {Row, Col} from 'element-ui'
 //  import '../../../statics/third/flextext/jquery.flexText.min'
 //  import '../../../statics/third/flextext/style.css'
 
   export default {
+    components: {
+      'el-row': Row,
+      'el-col': Col
+    },
     data () {
       return {
         message: {},

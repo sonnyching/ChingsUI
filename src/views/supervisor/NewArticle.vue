@@ -18,8 +18,13 @@
 
 <script type="text/ecmascript-6">
   import URL from '../../utils/Interface'
-
+  import {Select, Button, Option} from 'element-ui'
   export default {
+    components: {
+      'el-select': Select,
+      'el-option': Option,
+      'el-button': Button
+    },
     data () {
       return {
         selectType: '',

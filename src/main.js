@@ -12,36 +12,37 @@ import '../statics/common/common.css'
 import URL from '../src/utils/Interface'
 import HTTP from '../src/utils/httputil'
 import 'element-ui/lib/theme-default/index.css'
-import { Button, Select, Row, Col, Input, Menu,
-  Submenu, MenuItem, MenuItemGroup, Option,
-  TableColumn, Table, Tooltip, Pagination, Loading, Dialog} from 'element-ui'
+// import { Button, Select, Row, Col, Input, Menu,
+//   Submenu, MenuItem, MenuItemGroup, Option,
+//   TableColumn, Table, Tooltip, Pagination, Loading, Dialog} from 'element-ui'
 import 'normalize.css'
+import {Table, TableColumn, Tooltip} from 'element-ui'
 
 // Vue.use(MuseUI)
 Vue.use(Vuex)
 
-Vue.use(Pagination)
-
-Vue.use(Button)
-Vue.use(Select)
-Vue.use(Option)
-
-Vue.use(Loading)
-
-Vue.use(Row)
-Vue.use(Col)
-Vue.use(Input)
-
-Vue.use(Menu)
-Vue.use(Submenu)
-Vue.use(MenuItem)
-Vue.use(MenuItemGroup)
-
+// Vue.use(Pagination)
+//
+// Vue.use(Button)
+// Vue.use(Select)
+// Vue.use(Option)
+//
+// Vue.use(Loading)
+//
+// Vue.use(Row)
+// Vue.use(Col)
+// Vue.use(Input)
+//
+// Vue.use(Menu)
+// Vue.use(Submenu)
+// Vue.use(MenuItem)
+// Vue.use(MenuItemGroup)
+//
 Vue.use(TableColumn)
 Vue.use(Table)
-
-Vue.use(Dialog)
-
+//
+// Vue.use(Dialog)
+//
 Vue.use(Tooltip)
 
 Vue.use(VueRouter)
