@@ -25,13 +25,13 @@ export default {
     width:100%;
     /*background-color: #C7B3E5;*/
     background-color: #72d4fb;
-    height: 3.6rem;
+    height: 3rem;
     margin-bottom: 0.1rem;
     position: fixed;
 
   }
   .ching-article-header-title{
-    line-height: 3.6rem;
+    line-height: 3rem;
     margin: 0 1rem;
     font-family: Cursive,Lucida Grande, Lucida Sans Unicode, Helvetica, Arial, Verdana, sans-serif;
     font-size: 1.5rem;

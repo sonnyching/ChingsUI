@@ -124,9 +124,9 @@
       },
       articleDetail (id) {
         //  加载动画
-        this.$nextTick(function () {
-          $('#ching-index-Loading-img').show()
-        })
+//        this.$nextTick(function () {
+//          $('#ching-index-Loading-img').show()
+//        })
         this.$router.push({path: '/article/detail/' + id})
       },
       url (url) {
@@ -242,17 +242,17 @@
     width:100%;
     /*background-color: #C7B3E5;*/
     background-color: #72d4fb;
-    height: 3.6rem;
+    height: 3rem;
     /*margin-bottom: 0.1rem;*/
     position: fixed;
     z-index: 9999;
     color: white;
-
   }
   .ching-header-title{
-    line-height: 3.6rem;
+    line-height: 3rem;
     margin: 0 1rem;
     font-size: 1.5rem;
+    font-family: Cursive,Lucida Grande, Lucida Sans Unicode, Helvetica, Arial, Verdana, sans-serif;
   }
 
   .ching-header-about-me{
@@ -267,7 +267,7 @@
     /*background-color: #EFCEE8;*/
     /*height: 2rem;*/
     margin-bottom: 0rem;
-    height: 3.6rem;
+    height: 2.7rem;
   }
 
   .ching-navigator ul{
@@ -356,6 +356,8 @@
 
   /*文章列表*/
   .ching-index-content{
+    font-family: Lucida,Helvetica, Arial, Verdana, sans-serif;
+    /*font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;*/
     color: #575757;
     width:100%;
     margin:0.6rem auto ;
@@ -396,7 +398,7 @@
   .content-item-content{
     font-size: 1.0rem;
     font-weight: 300;
-    line-height: 1.4rem;
+    line-height: 1.8rem;
     padding: 0 1rem;
   }
 

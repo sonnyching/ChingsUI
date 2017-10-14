@@ -12,7 +12,7 @@
 <script type="text/ecmascript-6">
   import URL from '../../utils/Interface'
   import {Marked, Renderer} from '../../../statics/common/markdown'
-  import $ from 'jquery'
+//  import $ from 'jquery'
 
   export default {
     data () {
@@ -40,9 +40,9 @@
         this.time = res.data.data.createTime
       })
       //  加载完成
-      this.$nextTick(function () {
-        $('#ching-index-Loading-img').hide()
-      })
+//      this.$nextTick(function () {
+//        $('#ching-index-Loading-img').hide()
+//      })
     }
   }
 </script>
@@ -53,11 +53,11 @@
 
 @media screen and (max-width: 600px) {
   .article-detail-container{
-    width:100%;
+    width:99%;
     max-width: 960px;
     /*min-width: 640px;*/
     margin: 0rem auto;
-    padding-top: 4rem;
+    padding-top: 3rem;
     padding-bottom: 2rem;
   }
 
@@ -66,13 +66,13 @@
     /*box-shadow: 1px 1px 1px #c4c4c4;*/
     background-color: white;
     border:1px solid #eeeeee;
-    padding: 0.5rem;
+    padding: 1rem 0.5rem;
     margin:0 auto;
     border-radius: 1px;
   }
 
   .article_detail_title{
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     text-align: center;
     font-weight: 500;
   }
@@ -96,7 +96,7 @@
     max-width: 960px;
     /*min-width: 640px;*/
     margin: 0rem auto;
-    padding-top: 5rem;
+    padding-top: 3.1rem;
     padding-bottom: 2rem;
   }
 
@@ -121,6 +121,8 @@
     margin: 1.2rem;
     text-align: center;
   }
+
+
 }
 
 </style>

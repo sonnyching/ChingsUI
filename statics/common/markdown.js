@@ -50,7 +50,7 @@ renderer.image = function (href, title, text) {
     //  console.log(widthAndHeight[0] + ',' + widthAndHeight[1])
   }
 
-  return '<image src="'+href+'" width="'+widthAndHeight[0]+'" height="'+widthAndHeight[1]+'"  />'
+  return '<image src="'+href+'" width="'+widthAndHeight[0]+'" height="'+widthAndHeight[1]+'" class="article-img" />'
 }
 
 export var Marked = marked

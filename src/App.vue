@@ -16,7 +16,7 @@
 <script>
 //  import * as types from './vuex/types'
 //  import {mapState} from 'vuex'
-//  import $ from 'jquery'
+  import $ from 'jquery'
 
   export default {
     name: 'app',
@@ -26,10 +26,10 @@
     methods: {
     },
     mounted () {
-//      //  首页加载完成
-//      this.$nextTick(function () {
-//        $('#ching-index-Loading-img').hide()
-//      })
+      //  首页加载完成
+      this.$nextTick(function () {
+        $('#ching-index-Loading-img').hide()
+      })
     }
   }
 </script>
