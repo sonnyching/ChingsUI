@@ -218,7 +218,7 @@
           this.loadMoreText = '/(ㄒoㄒ)/~~我也好着急，但素就是加载不出来嘛！要不再戳我试试！'
           this.currentPage--
         })
-
+      document.title = 'SonnyChing的个人博客'
       //  加载完成
       this.$nextTick(function () {
         $('#ching-index-Loading-img').hide()

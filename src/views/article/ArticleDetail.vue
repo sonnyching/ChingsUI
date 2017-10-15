@@ -38,6 +38,7 @@
         this.title = res.data.data.title
         this.author = res.data.data.authorName
         this.time = res.data.data.createTime
+        document.title = this.title
       })
       //  加载完成
 //      this.$nextTick(function () {
