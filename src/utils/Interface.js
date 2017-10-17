@@ -11,6 +11,7 @@ export default {
   articleOff: '/api/article/articleOff',
   deleteArticle: '/api/article/delete',
   articleTypes: '/api/article/types',
+  updateViews: '/api/article/updateViews',
   supervisor: {
     managerArticles: '/api/article/supervisor/article/list'
   }

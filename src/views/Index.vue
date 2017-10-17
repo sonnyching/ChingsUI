@@ -29,7 +29,7 @@
                 <div class="content-item-line"></div>
                 <div class="content-item-content">{{article.content}}......</div>
                 <div class="content-item-end">
-                  <span class="article-views">12312 views</span>
+                  <span class="article-views">{{article.views}} views</span>
                   <span class="article-time">{{article.createTime}}</span>
                 </div>
               </div>
@@ -359,7 +359,7 @@
     font-family: Lucida,Helvetica, Arial, Verdana, sans-serif;
     /*font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;*/
     color: #575757;
-    width:100%;
+    /*width:100%;*/
     margin:0.6rem auto ;
     background-color: white;
     /*margin: 0.5rem 0rem;*/
