@@ -40,10 +40,13 @@
         this.time = res.data.data.createTime
         document.title = this.title
       })
-      //  加载完成
-//      this.$nextTick(function () {
-//        $('#ching-index-Loading-img').hide()
-//      })
+
+      //  异步更新浏览次数
+      this.$http.post(URL.updateViews, {
+        articleId: this.$route.params.id
+      }).then((res) => {
+        console.log(res.data)
+      })
     }
   }
 </script>

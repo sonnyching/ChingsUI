@@ -106,6 +106,11 @@ module.exports = {
       }
     ]
   },
+  externals: {
+    'vue': 'Vue',
+    'vuex': 'Vuex',
+    'axios': 'axios'
+  },
   plugins: [
       //  引入jquery
       new webpack.ProvidePlugin({
@@ -115,5 +120,5 @@ module.exports = {
         JQuery: "jquery",
         "window.jQuery": "jquery"
       })
-    ]
+  ]
 }
