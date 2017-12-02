@@ -27,10 +27,12 @@
                 <!--<span>{{article.createTime}}</span>-->
                 <div class="content-item-title">{{article.title}}</div>
                 <div class="content-item-line"></div>
-                <div class="content-item-content">{{article.content}}......</div>
+                <div class="content-item-content">{{article.outLine}}......</div>
                 <div class="content-item-end">
-                  <span class="article-views">{{article.views}} views</span>
-                  <span class="article-time">{{article.createTime}}</span>
+                  <span class="fa fa-eye"> {{article.views}} clicks</span>
+                  <span class="fa fa-clock-o"> {{article.createTime}}</span>
+                  <!--<span class="article-views">{{article.views}} views</span>-->
+                  <!--<span class="article-time">{{article.createTime}}</span>-->
                 </div>
               </div>
               </span>
@@ -94,7 +96,7 @@
 
 <script>
   import API from '../utils/Interface'
-  import {Marked, Renderer} from '../../statics/common/markdown'
+//  import {Marked, Renderer} from '../../statics/common/markdown'
   import { Dialog, Row, Col, Loading } from 'element-ui'
   import $ from 'jquery'
 
@@ -163,15 +165,17 @@
               return
             }
 
-            for (var i = 0; i < tempList.length; i++) {
-              const content = tempList[i].content
-              const result = Marked(content, { renderer: Renderer })
-              tempList[i].content = this.removeHTMLTag(result)
-            }
+//            for (var i = 0; i < tempList.length; i++) {
+//              const content = tempList[i].content
+//              const result = Marked(content, { renderer: Renderer })
+//              tempList[i].content = this.removeHTMLTag(result)
+//            }
 
             for (var j = 0; j < tempList.length; j++) {
               this.articleList.push(tempList[j])
             }
+
+//            this.articleList = tempList
 
             this.page = res.data.data
             this.loadingFlag = false
@@ -201,11 +205,11 @@
             return
           }
 
-          for (var i = 0; i < tempList.length; i++) {
+          /* for (var i = 0; i < tempList.length; i++) {
             const content = tempList[i].content
             const result = Marked(content, { renderer: Renderer })
             tempList[i].content = this.removeHTMLTag(result)
-          }
+          } */
 
           this.articleList = tempList
           this.page = res.data.data
@@ -382,7 +386,10 @@
     /*background-color: #DAF9CA;*/
     /*color: #7e57c2;*/
     /*color: #929292;*/
-    background-color: #e7e7e7;
+    /*background-color: #e7e7e7;*/
+    /*max-width: 51rem;*/
+    box-shadow: 0.3rem 0.3rem 0.5rem #e7e7e7;
+
   }
 
   .content-item-title{

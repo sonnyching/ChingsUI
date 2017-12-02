@@ -44,6 +44,12 @@ renderer.tablecell = function (content, flags) {
 
 */
 
+renderer.blockquote = function (quote) {
+  return '<blockquote style="border-left: 6px solid #b4b4b4;' +
+    'padding: 0.5rem;background-color: #f7f7f7;font-style: italic;margin-left: 0;width: 93%;">'
+    + quote + '</blockquote>'
+}
+
 renderer.image = function (href, title, text) {
   if (text != undefined) {
     var widthAndHeight = text.split(',')

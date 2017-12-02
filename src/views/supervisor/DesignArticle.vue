@@ -1,16 +1,23 @@
 <template>
   <div class="article-design-container">
     <el-row align="flex-start">
-      <el-col :span="12" >
+      <!--左侧输入栏-->
+      <el-col :span="leftSize" >
+        <!--标题-->
         <input type="file" id="article_upload_image" accept="image/png,image/gif,image/jpeg" @change="uploadpic($event)" style="display: none">
         <input type="text" id="markdown-editor-header" class="markdown-editor-header" autofocus v-model="articleTitle" placeholder="标题"/>
+        <!--工具栏-->
         <ul class="toolbar" id="article-add-toolbar">
           <li @click="insertImage" class="fa fa-picture-o"></li>
           <li @click="save" class="fa fa-floppy-o"></li>
+          <li @click="toggleOutLineWindow" class="fa fa-book"></li>
+          <li @click="switchWrittingMode" class="fa fa-bolt"></li>
         </ul>
+        <!--输入框-->
         <textarea id="articleSourceObj" class="markdown-editor" v-model="articleSource" placeholder="请输入文章内容..."></textarea>
       </el-col>
-      <el-col :span="12" class="">
+      <!--文章预览-->
+      <el-col :span="rightSize" class="" v-show="isShowRight">
         <div v-html="resultBody" id="articleSourceShow" class="article_show_area"></div>
       </el-col>
     </el-row>
@@ -42,7 +49,12 @@
         message: {},
         articleSource: '',
         articleTitle: '',
-        areaTextObj: ''
+        areaTextObj: '',
+        addOutLineWindow: false,
+        outLine: '',
+        leftSize: 12,
+        rightSize: 10,
+        isShowRight: true
       }
     },
     computed: {
@@ -120,6 +132,7 @@
         this.$http.post(URL.editArticle, {
           title: this.articleTitle,
           content: this.articleSource,
+          outLine: this.outLine,
           id: this.$route.params.articleId
         }).then((res) => {
           if (res.data.code === 0) {
@@ -129,6 +142,27 @@
             alert('保存失败')
           }
         })
+      },
+      toggleOutLineWindow () {
+        this.$prompt('请输入文章概要', 'OutLine', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          inputValue: this.outLine
+        }).then(({ value }) => {
+          this.outLine = value
+        }).catch(() => {
+        })
+      },
+      switchWrittingMode () {
+        if (this.isShowRight) {
+          this.leftSize = 24
+          this.rightSize = 0
+          this.isShowRight = false
+        } else {
+          this.leftSize = 12
+          this.rightSize = 12
+          this.isShowRight = true
+        }
       }
     },
     mounted () {
@@ -141,6 +175,7 @@
         }
         this.articleSource = res.data.data.content
         this.articleTitle = res.data.data.title
+        this.outLine = res.data.data.outLine
       })
 
       var editDivHeight = $('#articleSourceObj').offset().top

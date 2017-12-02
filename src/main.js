@@ -17,7 +17,7 @@ import 'element-ui/lib/theme-default/index.css'
 //   Submenu, MenuItem, MenuItemGroup, Option,
 //   TableColumn, Table, Tooltip, Pagination, Loading, Dialog} from 'element-ui'
 import 'normalize.css'
-import {Table, TableColumn, Tooltip} from 'element-ui'
+import {Table, TableColumn, Tooltip, MessageBox, Message} from 'element-ui'
 
 // Vue.use(MuseUI)
 Vue.use(Vuex)
@@ -48,8 +48,10 @@ Vue.use(Tooltip)
 
 Vue.use(VueRouter)
 
-Vue.config.productionTip = false
+Vue.prototype.$prompt = MessageBox.prompt
+Vue.prototype.$message = Message
 Vue.prototype.$http = axios
+Vue.config.productionTip = false
 
 const routers = new VueRouter({
   routes: router,
