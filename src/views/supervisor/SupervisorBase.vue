@@ -23,6 +23,10 @@
               <span slot="title">站点统计</span>
               <el-menu-item index="1-3">统计数据</el-menu-item>
             </el-menu-item-group>
+            <el-menu-item-group>
+              <span slot="title">备份</span>
+              <el-menu-item index="1-4" @click="staticBackup">上传资料备份</el-menu-item>
+            </el-menu-item-group>
           </el-submenu>
           <el-menu-item index="2" @click="toggleMenu">
             <template slot="title">
@@ -42,7 +46,7 @@
 
 <script>
   import { Menu, MenuItem, Submenu, MenuItemGroup, Row, Col, Tooltip } from 'element-ui'
-
+  import api from '../../utils/Interface'
   export default {
     components: {
       'el-menu-item': MenuItem,
@@ -70,6 +74,12 @@
           this.supervisorRightWidth = 22
         }
         this.isCollapse = !this.isCollapse
+      },
+      staticBackup () {
+        this.$http.post(api.supervisor.staticsBackup, {
+        }).then((res) => {
+          alert(res.data.info)
+        })
       }
     }
   }

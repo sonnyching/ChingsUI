@@ -13,7 +13,8 @@ export default {
   articleTypes: '/api/article/types',
   updateViews: '/api/article/updateViews',
   supervisor: {
-    managerArticles: '/api/article/supervisor/article/list'
+    managerArticles: '/api/article/supervisor/article/list',
+    staticsBackup: '/api/supervisor/staticsBackup'
   }
 
 }
