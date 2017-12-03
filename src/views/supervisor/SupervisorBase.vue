@@ -78,7 +78,6 @@
       staticBackup () {
         this.$http.post(api.supervisor.staticsBackup, {
         }).then((res) => {
-          console.log("done")
           alert(res.data.info)
         })
       }
