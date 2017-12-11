@@ -1,5 +1,7 @@
 <template>
   <div class="article-detail-container">
+    <ol class="ching-article-detail-menu-h1" @click="toggleMenu()">目录</ol>
+    <div style="border: 1px solid " v-show="menuIsShow" v-html="menuList"/>
     <div class="article-detail-body">
       <div class="article_detail_title">{{title}}</div>
       <div class="article_detail_header"> <span class="header-time">{{time}}</span></div>
@@ -12,7 +14,7 @@
 <script type="text/ecmascript-6">
   import URL from '../../utils/Interface'
   import {Marked, Renderer} from '../../../statics/common/markdown'
-//  import $ from 'jquery'
+  import $ from 'jquery'
 
   export default {
     data () {
@@ -20,11 +22,31 @@
         resultBody: '',
         title: '',
         author: '',
-        time: ''
+        time: '',
+        menuList: '',
+        menuIsShow: true
       }
     },
     methods: {
+      createMenu () {
+        var str = ''
+        $('.article-detail-body').find('h1,h2,h3,h4,h5,h6').each(function (i, item) {
+          var tagName = $(item).get(0).localName
+          $(item).attr('id', 'ching-article' + i)
+          str += '<ol class=" detail-menu anchor-link ching-article-detail-menu-' + tagName + '" link="#ching-article' + i + '">' + $(item).text() + '</ol>'
+        })
+        this.menuList = str
 
+        this.$nextTick(function () {
+          $('.anchor-link').click(function () {
+            $('html,body').animate({scrollTop: $($(this).attr('link')).offset().top - $($(this).attr('link')).outerHeight(true)}, 1000)
+          })
+        })
+      },
+      toggleMenu () {
+//        $('.anchor-link').hide()
+        this.menuIsShow = !this.menuIsShow
+      }
     },
     mounted () {
       this.$http.post(URL.articleDetail, {
@@ -39,13 +61,16 @@
         this.author = res.data.data.authorName
         this.time = res.data.data.createTime
         document.title = this.title
+        this.$nextTick(function () {
+          this.createMenu()
+        })
       })
 
       //  异步更新浏览次数
       this.$http.post(URL.updateViews, {
         articleId: this.$route.params.id
       }).then((res) => {
-        console.log(res.data)
+//        console.log(res.data)
       })
     }
   }

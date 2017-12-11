@@ -77,6 +77,26 @@ ol,ul {
   border-bottom: 1px solid #ddd;
 }
 
+.detail-menu{
+  cursor: pointer;
+}
+
+.ching-article-detail-menu-h1{
+  margin-left: 1rem;
+}
+.ching-article-detail-menu-h2{
+  margin-left: 2rem;
+}
+.ching-article-detail-menu-h3{
+  margin-left: 3rem;
+}
+.ching-article-detail-menu-h4{
+  margin-left: 4rem;
+}
+.ching-article-detail-menu-h5{
+  margin-left: 5rem;
+}
+
 @media screen and (max-width: 600px) {
   .article-content .article-img {
     height: auto;
